@@ -26,6 +26,7 @@ function library:CreateWindow(nazwa, x, y)
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
+	ScreenGui.DisplayOrder = 100
 	
 	body.Name = "body"
 	body.Parent = ScreenGui
