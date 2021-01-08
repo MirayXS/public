@@ -1,4 +1,4 @@
-local wersja = "3.14"
+local wersja = "3.14.1"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -137,7 +137,13 @@ function library:CreateWindow(nazwa, x, y)
 		
 		local function Fire()
 			enabled = not enabled
-			if enabled == true then OnOffToggle.Text = "on" else OnOffToggle.Text = "off" end
+			if enabled == true then 
+				OnOffToggle.Text = "on" 
+				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+			else 
+				OnOffToggle.Text = "off"
+				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 13, 75)
+			end
 			pcall(callback, enabled)
 		end
 		OnOffToggle.MouseButton1Up:Connect(Fire)

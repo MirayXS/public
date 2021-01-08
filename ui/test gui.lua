@@ -1,5 +1,5 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafal11ck/public/main/ui/ui%20test2.lua"))() 
-local Main = library:CreateWindow("Gui Name" , 500,200)  -- tworzy glowne okno gui
+local Main = library:CreateWindow("Gui Name" , 200,200)  -- tworzy glowne okno gui
 
 library:CreateToggle("testtog1", function(state) 
 	_G.test1 = state
