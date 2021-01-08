@@ -1,4 +1,4 @@
-local wersja = "3.13.1"
+local wersja = "3.14"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -58,7 +58,7 @@ function library:CreateWindow(nazwa, x, y)
 	hider.Name = "hider"
 	hider.Parent = topper
 	hider.BackgroundColor3 = Color3.fromRGB(8, 0, 103)
-	hider.Position = UDim2.new(0.933333337, 0, 0, 0)
+	hider.Position = UDim2.new(0, x-20, 0, 0)
 	hider.Rotation = 90
 	hider.Size = UDim2.new(0, 20, 0, 20)
 	hider.Font = Enum.Font.SourceSans
