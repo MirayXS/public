@@ -62,7 +62,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	nazwaa.TextColor3 = Color3.fromRGB(255, 255, 255)
 	nazwaa.TextSize = 14.000
 	nazwaa.Text = nazwa
-	nazwaa.Transparency = 0.7
+	nazwaa.Transparency = 0.1
 	
 	hider.Name = "hider"
 	hider.Parent = topper
