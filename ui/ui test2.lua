@@ -13,8 +13,8 @@ print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje
 --  end)
 	
 
-local library = {120, 120,120}
-bordcol={}
+local library = {}
+bordcol={120, 120,120}
 
 function library:CreateWindow(nazwa, x, y)
 	local ScreenGui = Instance.new("ScreenGui")
