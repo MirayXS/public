@@ -1,4 +1,4 @@
-local wersja = "3.14.11"
+local wersja = "3.14.12"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -16,7 +16,9 @@ print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje
 local library = {}
 bordcol={120, 120,120}
 
-function library:CreateWindow(nazwa, x, y)
+function library:CreateWindow(nazwa, x, y, xpos, ypos)
+	xpos = xpos or 0.5
+	ypos = ypos or 0.2
 	local ScreenGui = Instance.new("ScreenGui")
 	local body = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -29,22 +31,24 @@ function library:CreateWindow(nazwa, x, y)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.DisplayOrder = 100
 	
+	topper.Name = "topper"
+	topper.Parent = ScreenGui
+	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+	topper.Position = UDim2.new(xpos, 0, ypos, 0)
+	topper.Size = UDim2.new(0, x, 0, 20)
+	topper.BorderColor3 = Color3.new(bordcol)
+	
 	body.Name = "body"
 	body.Parent = ScreenGui
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	body.Position = UDim2.new(0.5, 0, 0, 0)
+	body.Position = topper.Position + UDim2.new(0, 0, 0, 20)
 	body.Size = UDim2.new(0, x, 0, y)
 	body.ClipsDescendants = true
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
 	
-	topper.Name = "topper"
-	topper.Parent = ScreenGui
-	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	topper.Position = body.Position + UDim2.new(0, 0, 0, -20)
-	topper.Size = UDim2.new(0, x, 0, 20)
-	topper.BorderColor3 = Color3.new(bordcol)
+	
 
 	nazwaa.Name = nazwa
 	nazwaa.Parent = topper
@@ -82,55 +86,6 @@ function library:CreateWindow(nazwa, x, y)
 		end	
 	end)
 	
-	-------------------------------------------------------------------------------------------------------------------
-	print("testzonestarT")
-	local function dragscript() -- ScreenGui.dragscript 
-		local script = Instance.new('LocalScript', ScreenGui)
-
-		local UserInputService = game:GetService("UserInputService")
-		
-		local gui = ScreenGui
-		
-		local dragging
-		local dragInput
-		local dragStart
-		local startPos
-		
-		local function update(input)
-			local delta = input.Position - dragStart
-			gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		end
-		
-		gui.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging = true
-				dragStart = input.Position
-				startPos = gui.Position
-		
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end)
-			end
-		end)
-		
-		gui.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-				dragInput = input
-			end
-		end)
-		
-		UserInputService.InputChanged:Connect(function(input)
-			if input == dragInput and dragging then
-				update(input)
-			end
-		end)
-	end
-	coroutine.wrap(dragscript)()
-	print("testzneend")
-	------------------------------------------------------------------------------------------------------------------------------------------
-
 	local nooblib={}
 	
 	-- classese ?
