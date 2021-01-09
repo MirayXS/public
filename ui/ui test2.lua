@@ -91,6 +91,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	deleter.TextSize = 14.000
 	deleter.BorderColor3 = Color3.new(bordcol)
 	deleter.BackgroundTransparency = 0.1
+	deleter.Visible = false
 	
 	deleter.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
