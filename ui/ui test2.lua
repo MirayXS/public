@@ -1,4 +1,4 @@
-local wersja = "3.14.18"
+local wersja = "3.14.19"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -40,6 +40,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	local topper = Instance.new("Frame")
 	local nazwaa = Instance.new("TextLabel")
 	local hider = Instance.new("TextButton")
+	local deleter = Instance.new("TextButton")
 	
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -102,6 +103,22 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
 			hider.Rotation = 90
 		end	
+	end)
+	
+	deleter.Name = "deleter" -- deleter
+	deleter.Parent = topper
+	deleter.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+	deleter.Position = UDim2.new(0, x-40, 0, 0)
+	deleter.Size = UDim2.new(0, 20, 0, 20)
+	deleter.Font = Enum.Font.SourceSans
+	deleter.Text = "x"
+	deleter.TextColor3 = Color3.fromRGB(255, 255, 255)
+	deleter.TextSize = 14.000
+	deleter.BorderColor3 = Color3.new(bordcol)
+	deleter.Transparency = 0.1
+	
+	deleter.MouseButton1Click:Connect(function()
+		ScreenGui:Destroy()
 	end)
 	
 	local nooblib={}
