@@ -1,4 +1,4 @@
-local wersja = "3.14.10"
+local wersja = "3.14.11"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -42,7 +42,7 @@ function library:CreateWindow(nazwa, x, y)
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	topper.Position = body.Size.UDim2 + UDim2.new(0, 0, 0, -20)
+	topper.Position = body.Position + UDim2.new(0, 0, 0, -20)
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
 
