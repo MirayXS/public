@@ -1,4 +1,4 @@
-local wersja = "3.14.9"
+local wersja = "3.14.10"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -24,10 +24,12 @@ function library:CreateWindow(nazwa, x, y)
 	local nazwaa = Instance.new("TextLabel")
 	local hider = Instance.new("TextButton")
 	
+	
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.DisplayOrder = 100
+	gethiddenproperty(ScreenGui, Draggable) = true
 	
 	body.Name = "body"
 	body.Parent = ScreenGui
@@ -40,8 +42,8 @@ function library:CreateWindow(nazwa, x, y)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
 	
-	body.Parent.Draggable = true
-	body.Parent.Selectable = true
+	
+
 	
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
