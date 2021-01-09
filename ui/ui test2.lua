@@ -19,6 +19,8 @@ bordcol={120, 120,120}
 function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	xposoff = 0
 	yposoff = 0
+	x = x or 200
+	y= y or 400
 	if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
 			xpos = 0
@@ -74,7 +76,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	nazwaa.BorderSizePixel=0
 	nazwaa.BackgroundTransparency = 1
 	nazwaa.Position = UDim2.new(0,0,0,0)
-	nazwaa.Size = UDim2.new(0, x, 0, 20)
+	nazwaa.Size = UDim2.new(0, x-40, 0, 20)
 	nazwaa.Font = Enum.Font.SourceSans
 	nazwaa.TextColor3 = Color3.fromRGB(255, 255, 255)
 	nazwaa.TextSize = 14.000
