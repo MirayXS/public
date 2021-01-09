@@ -53,7 +53,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 
 	nazwaa.Name = nazwa
 	nazwaa.Parent = topper
-	nazwaa.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	nazwaa.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	nazwaa.BorderSizePixel=0
 	nazwaa.BackgroundTransparency = 1
 	nazwaa.Position = UDim2.new(0,0,0,0)
