@@ -1,4 +1,4 @@
-local wersja = "3.14.20"
+local wersja = "3.14.21"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -115,16 +115,14 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 			body:TweenSize(UDim2.new(0, x,0, 0), "In", "Linear", 0.2)
 			hider.Rotation = 270
 			wait(2)
-			deleter.Visible = true
+			if toggled then
+				deleter.Visible = true
+			end
 		else
 			deleter.Visible = false
 			toggled = true
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
 			hider.Rotation = 90
-			for i = 1, 101 do 
-				wait(0.02)
-				deleter.Visible = false
-			end
 		end	
 	end)
 	
