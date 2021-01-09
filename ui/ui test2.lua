@@ -1,4 +1,4 @@
-local wersja = "3.14.7"
+local wersja = "3.14.8"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -28,6 +28,7 @@ function library:CreateWindow(nazwa, x, y)
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.DisplayOrder = 100
+	ScreenGui.Draggable = true
 	
 	body.Name = "body"
 	body.Parent = ScreenGui
