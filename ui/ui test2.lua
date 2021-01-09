@@ -1,4 +1,4 @@
-local wersja = "3.14.15"
+local wersja = "3.14.16"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -37,7 +37,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	topper.Position = UDim2.new(xpos, 0, ypos, 0)
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
-	topper.Transparency = 0.7
+	topper.Transparency = 0.5
 	
 	body.Name = "body"
 	body.Parent = ScreenGui
@@ -74,7 +74,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	hider.TextColor3 = Color3.fromRGB(255, 255, 255)
 	hider.TextSize = 14.000
 	hider.BorderColor3 = Color3.new(bordcol)
-	hider.Transparency = 0.7
+	hider.Transparency = 0.5
 	toggled = true
 	hider.MouseButton1Up:Connect(function()
 		if toggled == true then
