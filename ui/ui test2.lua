@@ -1,4 +1,4 @@
-local wersja = "3.14.22"
+local wersja = "3.14.23"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -91,7 +91,6 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	deleter.TextSize = 14.000
 	deleter.BorderColor3 = Color3.new(bordcol)
 	deleter.BackgroundTransparency = 0.1
-	deleter.Visible = false
 	
 	deleter.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
@@ -116,12 +115,12 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 			body:TweenSize(UDim2.new(0, x,0, 0), "In", "Linear", 0.2)
 			hider.Rotation = 270
 			wait(2)
-			if toggled == true then
+			if toggled == false then
 				deleter.Visible = true
 			end
 		else
-			deleter.Visible = false
 			toggled = true
+			deleter.Visible = false
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
 			hider.Rotation = 90
 		end	
