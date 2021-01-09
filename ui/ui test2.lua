@@ -92,7 +92,7 @@ function library:CreateWindow(nazwa, x, y)
 		button.Name = nazwa
 		button.Text = nazwa
 		button.Parent = body
-		button.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+		button.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		button.Size = UDim2.new(0, 200, 0, 35)
 		button.Font = Enum.Font.SourceSans
 		button.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -115,7 +115,7 @@ function library:CreateWindow(nazwa, x, y)
 	
 		ToggleButton.Name = "ToggleButton"
 		ToggleButton.Parent = body
-		ToggleButton.BackgroundColor3 = Color3.fromRGB(136, 25, 117)
+		ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		ToggleButton.Position = UDim2.new(0, 0, 0, 0)
 		ToggleButton.Size = UDim2.new(0, 165, 0, 35)
 		ToggleButton.Font = Enum.Font.SourceSans
@@ -127,7 +127,7 @@ function library:CreateWindow(nazwa, x, y)
 
 		OnOffToggle.Name = "OnOffToggle"
 		OnOffToggle.Parent = ToggleButton
-		OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 13, 75)
+		OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
 		OnOffToggle.Position = UDim2.new(0, 165, 0, 0)
 		OnOffToggle.Size = UDim2.new(0, 35, 0, 35)
 		OnOffToggle.Font = Enum.Font.SourceSans
@@ -142,7 +142,7 @@ function library:CreateWindow(nazwa, x, y)
 				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
 			else 
 				OnOffToggle.Text = "off"
-				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 13, 75)
+				OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
 			end
 			pcall(callback, enabled)
 		end
