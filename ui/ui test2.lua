@@ -1,4 +1,4 @@
-local wersja = "3.14.14"
+local wersja = "3.14.15"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -62,7 +62,6 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	nazwaa.TextColor3 = Color3.fromRGB(255, 255, 255)
 	nazwaa.TextSize = 14.000
 	nazwaa.Text = nazwa
-	nazwaa.Transparency = 0.1
 	
 	hider.Name = "hider"
 	hider.Parent = topper
