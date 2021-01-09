@@ -121,8 +121,8 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 			toggled = true
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
 			hider.Rotation = 90
-			for i = 1, 21 do 
-				wait(0.1)
+			for i = 1, 101 do 
+				wait(0.02)
 				deleter.Visible = false
 			end
 		end	
