@@ -1,4 +1,4 @@
-local wersja = "3.14.8"
+local wersja = "3.14.9"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -83,13 +83,13 @@ function library:CreateWindow(nazwa, x, y)
 	end)
 	
 	-------------------------------------------------------------------------------------------------------------------
-	
+	print("testzonestarT")
 	local function dragscript() -- ScreenGui.dragscript 
 		local script = Instance.new('LocalScript', ScreenGui)
 
 		local UserInputService = game:GetService("UserInputService")
 		
-		local gui = script.Parent
+		local gui = ScreenGui
 		
 		local dragging
 		local dragInput
@@ -128,7 +128,7 @@ function library:CreateWindow(nazwa, x, y)
 		end)
 	end
 	coroutine.wrap(dragscript)()
-	
+	print("testzneend")
 	------------------------------------------------------------------------------------------------------------------------------------------
 
 	local nooblib={}
