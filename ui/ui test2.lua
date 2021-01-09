@@ -16,7 +16,7 @@ print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje
 local library = {}
 bordcol={120, 120,120}
 
-function library:CreateWindow(nazwa, x, y, xpos, ypos)
+function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	xposoff = 0
 	yposoff = 0
 	if xpos ~= nil and xpos > 5 then -- pozycja x
@@ -45,6 +45,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.DisplayOrder = 100
+	ScreenGui.Name = nazwa
 	
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
