@@ -1,4 +1,4 @@
-local wersja = "3.14.1"
+local wersja = "3.14.2"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -30,7 +30,7 @@ function library:CreateWindow(nazwa, x, y)
 	
 	body.Name = "body"
 	body.Parent = ScreenGui
-	body.BackgroundColor3 = Color3.fromRGB(0, 13, 75)
+	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	body.Position = UDim2.new(0.5, 0, 0, 0)
 	body.Size = UDim2.new(0, x, 0, y)
 	body.ClipsDescendants = true
@@ -40,7 +40,7 @@ function library:CreateWindow(nazwa, x, y)
 	
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
-	topper.BackgroundColor3 = Color3.fromRGB(0, 81, 144)
+	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	topper.Position = UDim2.new(0.5, 0, 0, -20)
 	topper.Size = UDim2.new(0, x, 0, 20)
 
@@ -48,7 +48,7 @@ function library:CreateWindow(nazwa, x, y)
 	nazwaa.Parent = topper
 	nazwaa.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	nazwaa.BorderSizePixel=0
-	nazwaa.BackgroundTransparency = 0.800
+	nazwaa.BackgroundTransparency = 1
 	nazwaa.Position = UDim2.new(0,0,0,0)
 	nazwaa.Size = UDim2.new(0, x, 0, 20)
 	nazwaa.Font = Enum.Font.SourceSans
@@ -58,7 +58,7 @@ function library:CreateWindow(nazwa, x, y)
 	
 	hider.Name = "hider"
 	hider.Parent = topper
-	hider.BackgroundColor3 = Color3.fromRGB(8, 0, 103)
+	hider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	hider.Position = UDim2.new(0, x-20, 0, 0)
 	hider.Rotation = 90
 	hider.Size = UDim2.new(0, 20, 0, 20)
