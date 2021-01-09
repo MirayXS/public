@@ -1,4 +1,4 @@
-local wersja = "3.14.17"
+local wersja = "3.14.18"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -17,8 +17,23 @@ local library = {}
 bordcol={120, 120,120}
 
 function library:CreateWindow(nazwa, x, y, xpos, ypos)
-	xpos = xpos or 0.5
-	ypos = ypos or 0.1
+	xposoff = 0
+	yposoff = 0
+	if xpos ~= nil and xpos > 5 then -- pozycja x
+			xposoff = xpos
+			xpos = 0
+	else
+		xpos = xpos or 0.5
+	end
+	
+	if ypos ~= nil and ypos > 5 then -- pozycja y
+			yposoff = ypos
+			ypos = 0
+	else
+		xpos = xpos or 0.15
+	end
+
+	
 	local ScreenGui = Instance.new("ScreenGui")
 	local body = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -34,7 +49,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos)
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	topper.Position = UDim2.new(xpos, 0, ypos, 0)
+	topper.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
 	topper.Transparency = 0.1
