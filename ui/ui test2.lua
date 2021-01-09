@@ -1,4 +1,4 @@
-local wersja = "3.14.19"
+local wersja = "3.14.20"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -80,46 +80,51 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	nazwaa.TextSize = 14.000
 	nazwaa.Text = nazwa
 	
+	deleter.Name = "deleter" -- deleter
+	deleter.Parent = topper
+	deleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+	deleter.Position = UDim2.new(0, x-40, 0, 0)
+	deleter.Size = UDim2.new(0, 20, 0, 20)
+	deleter.Font = Enum.Font.Highway
+	deleter.Text = "X"
+	deleter.TextColor3 = Color3.fromRGB(255, 255, 255)
+	deleter.TextSize = 14.000
+	deleter.BorderColor3 = Color3.new(bordcol)
+	deleter.BackgroundTransparency = 0.1
+	
+	deleter.MouseButton1Click:Connect(function()
+		ScreenGui:Destroy()
+	end)
+	
 	hider.Name = "hider"
 	hider.Parent = topper
 	hider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	hider.Position = UDim2.new(0, x-20, 0, 0)
 	hider.Rotation = 90
 	hider.Size = UDim2.new(0, 20, 0, 20)
-	hider.Font = Enum.Font.SourceSans
+	hider.Font = Enum.Font.Highway
 	hider.Text = ">"
 	hider.TextColor3 = Color3.fromRGB(255, 255, 255)
 	hider.TextSize = 14.000
 	hider.BorderColor3 = Color3.new(bordcol)
-	hider.Transparency = 0.1
+	hider.BackgroundTransparency = 0.1
 	toggled = true
 	hider.MouseButton1Up:Connect(function()
 		if toggled == true then
 			toggled = false
 			body:TweenSize(UDim2.new(0, x,0, 0), "In", "Linear", 0.2)
-			hider.Rotation = 270		
+			hider.Rotation = 270
+			wait(3)
+			deleter.Visible = true
 		else
+			deleter.Visible = false
 			toggled = true
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
 			hider.Rotation = 90
 		end	
 	end)
 	
-	deleter.Name = "deleter" -- deleter
-	deleter.Parent = topper
-	deleter.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-	deleter.Position = UDim2.new(0, x-40, 0, 0)
-	deleter.Size = UDim2.new(0, 20, 0, 20)
-	deleter.Font = Enum.Font.SourceSans
-	deleter.Text = "x"
-	deleter.TextColor3 = Color3.fromRGB(255, 255, 255)
-	deleter.TextSize = 14.000
-	deleter.BorderColor3 = Color3.new(bordcol)
-	deleter.Transparency = 0.1
 	
-	deleter.MouseButton1Click:Connect(function()
-		ScreenGui:Destroy()
-	end)
 	
 	local nooblib={}
 	
