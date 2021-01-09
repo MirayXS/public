@@ -1,4 +1,4 @@
-local wersja = "3.14.2"
+local wersja = "3.14.3"
 print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -43,6 +43,7 @@ function library:CreateWindow(nazwa, x, y)
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	topper.Position = UDim2.new(0.5, 0, 0, -20)
 	topper.Size = UDim2.new(0, x, 0, 20)
+	topper.BorderColor3(66, 66, 66)
 
 	nazwaa.Name = nazwa
 	nazwaa.Parent = topper
@@ -66,6 +67,7 @@ function library:CreateWindow(nazwa, x, y)
 	hider.Text = ">"
 	hider.TextColor3 = Color3.fromRGB(255, 255, 255)
 	hider.TextSize = 14.000
+	hider.BorderColor3(66, 66, 66)
 	toggled = true
 	hider.MouseButton1Up:Connect(function()
 		if toggled == true then
@@ -97,6 +99,7 @@ function library:CreateWindow(nazwa, x, y)
 		button.Font = Enum.Font.SourceSans
 		button.TextColor3 = Color3.fromRGB(255, 255, 255)
 		button.TextSize = 14.000
+		button.BorderColor3(66, 66, 66)
 		
 		button.MouseButton1Up:Connect(function()
 			pcall(callback)
@@ -124,6 +127,7 @@ function library:CreateWindow(nazwa, x, y)
 		ToggleButton.TextSize = 14.000
 		ToggleButton.TextWrapped = true
 		ToggleButton.TextXAlignment = Enum.TextXAlignment.Left
+		ToggleButton.BorderColor3(66, 66, 66)
 
 		OnOffToggle.Name = "OnOffToggle"
 		OnOffToggle.Parent = ToggleButton
@@ -134,6 +138,7 @@ function library:CreateWindow(nazwa, x, y)
 		OnOffToggle.Text = "off"
 		OnOffToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
 		OnOffToggle.TextSize = 14.000
+		OnOffToggle.BorderColor3(66, 66, 66)
 		
 		local function Fire()
 			enabled = not enabled
