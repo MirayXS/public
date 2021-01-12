@@ -1,5 +1,5 @@
 local wersja = "3.14.23"
-print("UI "..wersja.."   by rafal9ck#8155")  -- se printuje wersje 
+print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
 	-- _G.test1 = state  
