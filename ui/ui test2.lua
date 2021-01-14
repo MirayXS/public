@@ -63,7 +63,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	body.Name = "body"
 	body.Parent = topper
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	body.Position = {0,0}{0,21}
+	body.Position = UDim2.new(0,0,0,21)
 	body.Size = UDim2.new(0, x, 0, y)
 	body.ClipsDescendants = true
 	UIListLayout.Parent = body
