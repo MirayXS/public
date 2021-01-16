@@ -1,4 +1,4 @@
-local wersja = "3.15.2"
+local wersja = "3.15.3"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -21,7 +21,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local xposoff = 0
 	local yposoff = 0
 	
-	x = x or 0
+	x = x or 200
 	y= y or 0
 	if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
