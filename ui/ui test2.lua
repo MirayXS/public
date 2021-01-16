@@ -1,4 +1,4 @@
-local wersja = "3.16.4"
+local wersja = "3.16.5"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -239,6 +239,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		switch.Parent = base
 		switch.Name = "switchframe"
 		switch.ZIndex = 101
+		switch.ClipsDescendants = true
 		
 		local switchpositioner = Instance.new("UIListLayout")
 		switchpositioner.Parent = switch
@@ -259,7 +260,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.MouseButton1Click:Connect(openchoose)
 		
 		local function callback()
-			pcall(callback, selected.Text)
+			print(pcall(callback, selected.Text))
 		end
 		
 		for i, v in pairs(options) do
