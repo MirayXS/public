@@ -1,4 +1,4 @@
-local wersja = "3.15.3"
+local wersja = "3.15.4"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -22,7 +22,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local yposoff = 0
 	
 	x = x or 200
-	y= y or 0
+	y = y or 0
 	if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
 			xpos = 0
@@ -142,7 +142,8 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local button = Instance.new("TextButton")
 		
 		body.Size = body.Size + UDim2.new(0,0,0,35)
-
+		y = y + 35
+		
 		button.Name = nazwa
 		button.Text = nazwa
 		button.Parent = body
@@ -168,6 +169,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local ToggleButton = Instance.new("TextLabel")
 		local OnOffToggle = Instance.new("TextButton")
 	
+		y = y + 35
 		body.Size = body.Size + UDim2.new(0,0,0,35)
 		
 		ToggleButton.Name = "ToggleButton"
