@@ -212,7 +212,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
 	
-	function library:Createswitch(name, options, callback, default)
+	function library:Createswitch(name, options, default)
 		default = default or "Choose"
 		body.Size = body.Size + UDim2.new(0,0,0,35)
 		
