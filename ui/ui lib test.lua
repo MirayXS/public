@@ -1,4 +1,4 @@
-local wersja = "3.15"
+local wersja = "3.15.4"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -17,11 +17,12 @@ function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()loca
 local library = {}
 bordcol={120, 120,120}
 
-function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
-	xposoff = 0
-	yposoff = 0
+function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
+	local xposoff = 0
+	local yposoff = 0
+	
 	x = x or 200
-	y= y or 400
+	y = y or 0
 	if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
 			xpos = 0
@@ -69,8 +70,6 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
-	
-	
 
 	nazwaa.Name = nazwa
 	nazwaa.Parent = topper
@@ -141,7 +140,10 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		print("dodaje przycisk "..nazwa)
 		local button = Instance.new("TextButton")
-
+		
+		body.Size = body.Size + UDim2.new(0,0,0,35)
+		y = y + 35
+		
 		button.Name = nazwa
 		button.Text = nazwa
 		button.Parent = body
@@ -151,6 +153,7 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 		button.TextColor3 = Color3.fromRGB(255, 255, 255)
 		button.TextSize = 14.000
 		button.BorderColor3 = Color3.new(bordcol)
+		button.TextXAlignment = Enum.TextXAlignment.Left
 		
 		button.MouseButton1Up:Connect(function()
 			pcall(callback)
@@ -167,6 +170,9 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 		local ToggleButton = Instance.new("TextLabel")
 		local OnOffToggle = Instance.new("TextButton")
 	
+		y = y + 35
+		body.Size = body.Size + UDim2.new(0,0,0,35)
+		
 		ToggleButton.Name = "ToggleButton"
 		ToggleButton.Parent = body
 		ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
@@ -202,9 +208,13 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			pcall(callback, enabled)
 		end
-		OnOffToggle.MouseButton1Up:Connect(Fire)
 		
+		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
+	
+	
+	
+	
 	
 	
 
