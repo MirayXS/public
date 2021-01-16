@@ -153,6 +153,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		button.TextColor3 = Color3.fromRGB(255, 255, 255)
 		button.TextSize = 14.000
 		button.BorderColor3 = Color3.new(bordcol)
+		button.TextXAlignment = Enum.TextXAlignment.Left
 		
 		button.MouseButton1Up:Connect(function()
 			pcall(callback)
@@ -207,9 +208,13 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			pcall(callback, enabled)
 		end
-		OnOffToggle.MouseButton1Up:Connect(Fire)
 		
+		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
+	
+	
+	
+	
 	
 	
 
