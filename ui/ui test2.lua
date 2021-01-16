@@ -1,4 +1,4 @@
-local wersja = "3.16.1"
+local wersja = "3.16.2"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -221,9 +221,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		base.Parent= body
 		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		base.Size = UDim2.new(0, 165, 0, 35)
-		base.TextColor3 = Color3.fromRGB(255, 255, 255)
-		base.TextSize = 14.000
-		base.TextWrapped = true
 		
 		local title = Instance.new("TextLabel")
 		title.Parent = base
