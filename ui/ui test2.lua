@@ -212,12 +212,71 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
 	
-	
-	
-	
-	
-	
-
+	function library:Createswitch(name, options, callback, default)
+		default = default or "Choose"
+		body.Size = body.Size + UDim2.new(0,0,0,35)
+		
+		local base = Instance.new("Frame")
+		base.Name = "switchbase"
+		base.Parent= body
+		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		base.Size = UDim2.new(0, 165, 0, 35)
+		base.Font = Enum.Font.SourceSans
+		base.TextColor3 = Color3.fromRGB(255, 255, 255)
+		base.TextSize = 14.000
+		base.TextWrapped = true
+		
+		local title = Instance.new("TextLabel")
+		title.Parent = base
+		title.Transparency = 1 
+		title.Size = base.Size
+		title.Text = name
+		title.TextColor3 = Color3.fromRGB(255, 255, 255)
+		title.Font = Enum.Font.SourceSans
+		title.BorderSizePixel = 0
+		
+		local switch = Instance.new("Frame")
+		switch.Position =  UDim2.new(0, 60, 0, 5)
+		switch.Size = UDim2.new(0, 100, 0, 0)
+		local openedswitchsize = UDim2.new(0, 100, 0, 0)
+		switch.Transparency = 1
+		switch.Parent = base
+		switch.Name = "switchframe"
+		
+		local switchpositioner = Instance.new("UIListLayout")
+		switchpositioner.Parent = switch
+		
+		local selected = Instance.new("TextButton")
+		selected.Name = "openselectionbutton"
+		selected.Parent = base
+		selected.Position = UDim2.new(0, 60, 0, 5)
+		selected.Size = UDim2.new(0, 100, 0, 25)
+		selected.Text = "Choose"
+		selected.Font = Enum.Font.SourceSans
+		
+		local openedswitchsize = 0
+		
+		local function openchoose()
+			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
+		end
+		selected.MouseButton1Click:Connect(openchoose)
+		
+		for i, v in pairs(options) do
+			openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 15)
+			local case = Instance.new("TextButton")
+			case.Font = Enum.Font.SourceSans
+			case.Parent = switch
+			case.Name = v
+			case.Text = v
+			case.Size = UDim2.new(0, 100, 0, 15)
+			
+			local function choose()
+				selected.Text = v
+				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2)
+			end
+			case.MouseButton1Click:Connect(choose)
+		end
+	end
 	
 	return nooblib
 end
