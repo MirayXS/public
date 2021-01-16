@@ -1,4 +1,4 @@
-local wersja = "3.16.0"
+local wersja = "3.16.1"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -212,7 +212,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
 	
-	function library:Createswitch(name, options, default)
+	function library:Createswitch(name, options, callback, default)
 		default = default or "Choose"
 		body.Size = body.Size + UDim2.new(0,0,0,35)
 		
@@ -221,7 +221,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		base.Parent= body
 		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		base.Size = UDim2.new(0, 165, 0, 35)
-		base.Font = Enum.Font.SourceSans
 		base.TextColor3 = Color3.fromRGB(255, 255, 255)
 		base.TextSize = 14.000
 		base.TextWrapped = true
@@ -251,7 +250,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.Parent = base
 		selected.Position = UDim2.new(0, 60, 0, 5)
 		selected.Size = UDim2.new(0, 100, 0, 25)
-		selected.Text = "Choose"
+		selected.Text = default or "Choose"
 		selected.Font = Enum.Font.SourceSans
 		
 		local openedswitchsize = 0
@@ -260,6 +259,10 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
 		end
 		selected.MouseButton1Click:Connect(openchoose)
+		
+		local function callback()
+			pcall(callback, selected.Text)
+		end
 		
 		for i, v in pairs(options) do
 			openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 15)
@@ -273,6 +276,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			local function choose()
 				selected.Text = v
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2)
+				callback()
 			end
 			case.MouseButton1Click:Connect(choose)
 		end
