@@ -17,9 +17,10 @@ function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()loca
 local library = {}
 bordcol={120, 120,120}
 
-function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
-	xposoff = 0
-	yposoff = 0
+function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
+	local xposoff = 0
+	local yposoff = 0
+	
 	x = x or 200
 	y= y or 400
 	if xpos ~= nil and xpos > 5 then -- pozycja x
@@ -69,8 +70,6 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
-	
-	
 
 	nazwaa.Name = nazwa
 	nazwaa.Parent = topper
@@ -141,6 +140,8 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		print("dodaje przycisk "..nazwa)
 		local button = Instance.new("TextButton")
+		
+		body.Size = body.Size + UDim2.new(0,0,0,35)
 
 		button.Name = nazwa
 		button.Text = nazwa
@@ -167,6 +168,8 @@ function library:CreateWindow(nazwa, x, y, xpos, ypos) -- nazwa rozmiar pozycja
 		local ToggleButton = Instance.new("TextLabel")
 		local OnOffToggle = Instance.new("TextButton")
 	
+		body.Size = body.Size + UDim2.new(0,0,0,35)
+		
 		ToggleButton.Name = "ToggleButton"
 		ToggleButton.Parent = body
 		ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
