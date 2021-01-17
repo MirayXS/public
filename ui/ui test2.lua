@@ -251,7 +251,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 90, 0, 5)
-		switch.Size = UDim2.new(0, 100, 0, )
+		switch.Size = UDim2.new(0, 100, 0, 0)
 		switch.Transparency = 1
 		switch.Parent = base
 		switch.Name = "switchframe"
