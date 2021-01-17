@@ -1,4 +1,4 @@
-local wersja = "3.16.38"
+local wersja = "3.16.39"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -222,8 +222,8 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
 	
-	function library:Createswitch(name, options, callback, default)
-		name = name or "switchname"
+	function library:Createswitch(sname, options, callback, default)
+		sname = sname or "switchname"
 		callback = callback or function() end
 		local default = default or "Choose"
 		
@@ -238,7 +238,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		base.BorderColor3 = Color3.new(bordcol)
 		
 		local title = Instance.new("TextLabel")
-		title.Name = "switchname"
+		title.Name = "switchtitle"
 		title.Parent = base
 		title.BackgroundTransparency = 1
 		title.Size = base.Size
@@ -247,7 +247,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		title.Font = Enum.Font.SourceSans
 		title.BorderSizePixel = 0
 		title.TextSize = 14.000
-		title.Text = name
+		title.Text = sname
 		
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 90, 0, 5)
