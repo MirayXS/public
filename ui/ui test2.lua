@@ -1,4 +1,4 @@
-local wersja = "3.16.35"
+local wersja = "3.16.36"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -236,7 +236,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local title = Instance.new("TextLabel")
 		title.Name = "switchname"
 		title.Parent = base
-		title.BackgroundTransparency = 1 
+		title.BackgroundTransparency = 1
 		title.Size = base.Size
 		title.Text = name
 		title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -246,7 +246,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		title.TextSize = 14.000
 		
 		local switch = Instance.new("Frame")
-		switch.Position =  UDim2.new(0, 60, 0, 5)
+		switch.Position =  UDim2.new(0, 90, 0, 5)
 		switch.Size = UDim2.new(0, 100, 0, 0)
 		switch.Transparency = 1
 		switch.Parent = base
