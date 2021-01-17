@@ -1,4 +1,4 @@
-local wersja = "3.16.6"
+local wersja = "3.16.7"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -260,7 +260,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.MouseButton1Click:Connect(openchoose)
 		
 		local function callb()
-			print(pcall(callback, selected.Text))
+			callback(selected.Text)
 		end
 		
 		for i, v in pairs(options) do
