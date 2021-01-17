@@ -1,4 +1,4 @@
-local wersja = "3.16.7"
+local wersja = "3.16.8"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -254,11 +254,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local openedswitchsize = UDim2.new(0, 0, 0, 0)
 		
-		local function openchoose()
-			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
-		end
-		selected.MouseButton1Click:Connect(openchoose)
-		
 		local function callb()
 			callback(selected.Text)
 		end
@@ -279,6 +274,13 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			case.MouseButton1Click:Connect(choose)
 		end
+		
+		local function openchoose(openedswitchsize)
+			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
+		end
+		selected.MouseButton1Click:Connect(openchoose)
+		
+		
 	end
 	
 	return nooblib
