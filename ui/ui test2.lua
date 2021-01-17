@@ -280,12 +280,12 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local function openchoose()
 			print("opening" , openedswitchsize)
-			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
+			switchframe:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
 		end
 		
 		selected.MouseButton1Click:Connect(openchoose)
 		
-		
+		print("done")
 	end
 	
 	return nooblib
