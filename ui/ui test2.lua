@@ -1,4 +1,4 @@
-local wersja = "3.16.39"
+local wersja = "3.16.40"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -251,7 +251,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 90, 0, 5)
-		switch.Size = UDim2.new(0, 100, 0, 0)
+		switch.Size = UDim2.new(0, 100, 0, )
 		switch.Transparency = 1
 		switch.Parent = base
 		switch.Name = "switchframe"
@@ -266,14 +266,14 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.Name = "openselectionbutton"
 		selected.Parent = base
 		selected.Position = UDim2.new(0, 90, 0, 5)
-		selected.Size = UDim2.new(0, 100, 0, 25)
+		selected.Size = UDim2.new(0, 101, 0, 25)
 		selected.Text = default or "Choose"
 		selected.Font = Enum.Font.SourceSans
 		selected.TextSize = 14.000
 		selected.BorderColor3 = Color3.new(bordcol)
 		
 		
-		local openedswitchsize = UDim2.new(100, 0, 0, 0)
+		local openedswitchsize = UDim2.new(101, 0, 0, 1)   -- 100 to 101  0 to 1
 		for i = 1, #options do 
 			 openedswitchsize = openedswitchsize + UDim2.new(100, 0, 0, 25)
 		end
