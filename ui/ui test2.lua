@@ -279,7 +279,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		end
 		
 		local function openchoose()
-			print("opening "..switch.Size.." to "..openedswitchsize)
+			print("opening "switch.Size" to "openedswitchsize)
 			switch:TweenSize(UDim2.new(0, 100, 0, openedswitchsize), "Out", "Linear", 0.2)
 		end
 		
