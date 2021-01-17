@@ -1,4 +1,4 @@
-local wersja = "3.16.31"
+local wersja = "3.16.32"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -303,11 +303,9 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			case.MouseButton1Click:Connect(choosef)
 		end
-		
-		
-		--print("done")
+		callb()
 	end
-	
+	--print("done")
 	return nooblib
 end
 print("UI "..wersja," loaded!")
