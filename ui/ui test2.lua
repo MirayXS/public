@@ -1,4 +1,4 @@
-local wersja = "3.16.37"
+local wersja = "3.16.38"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -242,12 +242,12 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		title.Parent = base
 		title.BackgroundTransparency = 1
 		title.Size = base.Size
-		title.Text = name
 		title.TextColor3 = Color3.fromRGB(255, 255, 255)
 		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.Font = Enum.Font.SourceSans
 		title.BorderSizePixel = 0
 		title.TextSize = 14.000
+		title.Text = name
 		
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 90, 0, 5)
