@@ -1,4 +1,4 @@
-local wersja = "3.16.32"
+local wersja = "3.16.33"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -279,7 +279,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local function openchoose()
 			base.ClipsDescendants = false
-			print("opening ", switch.Size, " to ", openedswitchsize)
+			--print("opening ", switch.Size, " to ", openedswitchsize)
 			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2)
 		end
 		
