@@ -1,4 +1,4 @@
-local wersja = "3.16.25" -- 
+local wersja = "3.16.26"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -66,7 +66,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	body.Position = UDim2.new(0, 0 ,0 ,21)
 	body.Size = UDim2.new(0, x, 0, y)
-	body.ClipsDescendants = true
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
@@ -116,6 +115,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	hider.MouseButton1Up:Connect(function()
 		if toggled == true then
 			toggled = false
+			body.ClipsDescendants = true
 			body:TweenSize(UDim2.new(0, x,0, 0), "In", "Linear", 0.2)
 			hider.Rotation = 270
 			wait(2)
@@ -123,6 +123,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 				deleter.Visible = true
 			end
 		else
+			body.ClipsDescendants = false
 			toggled = true
 			deleter.Visible = false
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
@@ -227,7 +228,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local title = Instance.new("TextLabel")
 		title.Parent = base
-		title.Transparency = 1 
+		title.BackgroundTransparency = 1 
 		title.Size = base.Size
 		title.Text = name
 		title.TextColor3 = Color3.fromRGB(255, 255, 255)
