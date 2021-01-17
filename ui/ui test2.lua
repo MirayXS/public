@@ -1,4 +1,4 @@
-local wersja = "3.16.5"
+local wersja = "3.16.6"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -259,7 +259,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		end
 		selected.MouseButton1Click:Connect(openchoose)
 		
-		local function callback()
+		local function callb()
 			print(pcall(callback, selected.Text))
 		end
 		
@@ -268,14 +268,14 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			local case = Instance.new("TextButton")
 			case.Font = Enum.Font.SourceSans
 			case.Parent = switch
-			case.Name = v
+			case.Name = v.." swichcase"
 			case.Text = v
 			case.Size = UDim2.new(0, 100, 0, 15)
 			
 			local function choose()
 				selected.Text = v
 				case.Parent:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2)
-				callback()
+				callb()
 			end
 			case.MouseButton1Click:Connect(choose)
 		end
