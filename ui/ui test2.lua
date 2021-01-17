@@ -1,4 +1,4 @@
-local wersja = "3.16.43"
+local wersja = "3.16.44"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -284,8 +284,10 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local function openchoose()
 			base.ClipsDescendants = false
+			switch.ClipsDescendants = false
 			--print("opening ", switch.Size, " to ", openedswitchsize)
 			base.ZIndex = base.ZIndex + 1 
+			switch
 			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2)
 		end
 		
@@ -305,6 +307,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 				selected.Text = case.Text
 				local function clip()
 					base.ClipsDescendants = true
+					switch.ClipsDescendants = true
 					base.ZIndex = base.ZIndex - 1
 				end
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
