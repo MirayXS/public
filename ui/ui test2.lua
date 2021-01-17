@@ -1,4 +1,4 @@
-local wersja = "3.16.28"
+local wersja = "3.16.29"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -288,7 +288,9 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			
 			local function choosef()
 				selected.Text = case.Text
-				local function clip() base.ClipsDescendants end
+				local function clip()
+					base.ClipsDescendants = true
+				end
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
 				callb()
 				--print("SELECTED"..case.Text)
