@@ -273,7 +273,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.BorderColor3 = Color3.new(bordcol)
 		
 		
-		local openedswitchsize = UDim2.new(102, 0, 0, 1)   -- 100 to 101  0 to 1
+		local openedswitchsize = UDim2.new(100, 0, 0, 1)
 		for i = 1, #options do 
 			 openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 25)
 		end
