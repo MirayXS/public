@@ -1,4 +1,4 @@
-local wersja = "3.16.47"
+local wersja = "3.16.48"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -279,7 +279,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		end
 		
 		local function callb()
-			callback(selected.Text)
+			pcall(callback, selected.Text)
 		end
 		
 		local function openchoose()

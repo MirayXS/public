@@ -1,17 +1,25 @@
-local wersja = "3.15.4"
+local wersja = "3.16.48"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
--- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
-	-- _G.test1 = state  
-    -- while _G.test1 == true and wait(1) do
-		-- print("test1", _G.test1) 		-- co robic 
-    -- end
--- end)
+--[[
 
---  library:CreateButton("Gay", function()  -- A1 button text
---  	print("yes") -- what to do on click 
---  end)
-	
+ library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
+	_G.test1 = state  
+    while _G.test1 == true and wait(1) do
+		print("test1", _G.test1) 		-- co robic 
+    end
+ end)
+
+ library:CreateButton("Gay", function()  -- A1 button text
+ 	print("yes") -- what to do on click 
+ end)
+ 
+ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
+    print("yes ", selection)
+end,"default :)")
+
+--]]
+
 function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
 
 local library = {}
@@ -66,7 +74,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 	body.Position = UDim2.new(0, 0 ,0 ,21)
 	body.Size = UDim2.new(0, x, 0, y)
-	body.ClipsDescendants = true
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = "Top"
@@ -116,6 +123,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	hider.MouseButton1Up:Connect(function()
 		if toggled == true then
 			toggled = false
+			body.ClipsDescendants = true
 			body:TweenSize(UDim2.new(0, x,0, 0), "In", "Linear", 0.2)
 			hider.Rotation = 270
 			wait(2)
@@ -125,7 +133,10 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		else
 			toggled = true
 			deleter.Visible = false
-			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2)
+			local function nclip()
+				body.ClipsDescendants = false
+			end
+			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2, false, nclip)
 			hider.Rotation = 90
 		end	
 	end)
@@ -138,7 +149,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	function library:CreateButton(nazwa, callback)
 		local callback = callback or function() end
 		
-		print("dodaje przycisk "..nazwa)
+		--print("dodaje przycisk "..nazwa)
 		local button = Instance.new("TextButton")
 		
 		body.Size = body.Size + UDim2.new(0,0,0,35)
@@ -212,13 +223,104 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
 	
-	
-	
-	
-	
-	
-
-	
+	function library:Createswitch(sname, options, callback, default)
+		sname = sname or "switchname"
+		callback = callback or function() end
+		local default = default or "Choose"
+		
+		y = y + 35
+		body.Size = body.Size + UDim2.new(0,0,0,35)
+		
+		local base = Instance.new("Frame")
+		base.Name = "switchbase"
+		base.Parent= body
+		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		base.Size = UDim2.new(0, 200, 0, 35)
+		base.BorderColor3 = Color3.new(bordcol)
+		
+		local title = Instance.new("TextLabel")
+		title.Name = "switchtitle"
+		title.Parent = base
+		title.BackgroundTransparency = 1
+		title.Size = base.Size
+		title.TextColor3 = Color3.fromRGB(255, 255, 255)
+		title.TextXAlignment = Enum.TextXAlignment.Left
+		title.Font = Enum.Font.SourceSans
+		title.BorderSizePixel = 0
+		title.TextSize = 14.000
+		title.Text = sname
+		
+		local switch = Instance.new("Frame")
+		switch.Position =  UDim2.new(0, 90, 0, 5)
+		switch.Size = UDim2.new(0, 100, 0, 0)
+		switch.Transparency = 1
+		switch.Parent = base
+		switch.Name = "switchframe"
+		switch.ZIndex = 101
+		switch.ClipsDescendants = true
+		switch.BorderColor3 = Color3.new(bordcol)
+		
+		local switchpositioner = Instance.new("UIListLayout")
+		switchpositioner.Parent = switch
+		
+		local selected = Instance.new("TextButton")
+		selected.Name = "openselectionbutton"
+		selected.Parent = base
+		selected.Position = UDim2.new(0, 90, 0, 5)
+		selected.Size = UDim2.new(0, 101, 0, 25)
+		selected.Text = default or "Choose"
+		selected.Font = Enum.Font.SourceSans
+		selected.TextSize = 14.000
+		selected.BorderColor3 = Color3.new(bordcol)
+		
+		
+		local openedswitchsize = UDim2.new(100, 0, 0, 1)
+		for i = 1, #options do 
+			 openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 25)
+		end
+		
+		local function callb()
+			pcall(callback, selected.Text)
+		end
+		
+		local function openchoose()
+			base.ClipsDescendants = false
+			local function clipf()
+				switch.ClipsDescendants = false
+			end
+			--print("opening ", switch.Size, " to ", openedswitchsize)
+			base.ZIndex = base.ZIndex + 1 
+			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2, false, clipf)
+		end
+		
+		selected.MouseButton1Click:Connect(openchoose)
+		
+		for i, v in pairs(options) do
+			local case = Instance.new("TextButton")
+			case.Font = Enum.Font.SourceSans
+			case.Parent = switch
+			case.Name = v.." swichcase"
+			case.Text = v
+			case.Size = UDim2.new(0, 100, 0, 25)
+			case.TextSize = 14.000
+			case.BorderColor3 = Color3.new(bordcol)
+			
+			local function choosef()
+				selected.Text = case.Text
+				local function clip()
+					base.ClipsDescendants = true
+					base.ZIndex = base.ZIndex - 1
+				end
+				switch.ClipsDescendants = true
+				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
+				callb()
+				--print("SELECTED"..case.Text)
+			end
+			case.MouseButton1Click:Connect(choosef)
+		end
+		callb()
+	end
+	--print("done")
 	return nooblib
 end
 print("UI "..wersja," loaded!")
