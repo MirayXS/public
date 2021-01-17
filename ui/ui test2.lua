@@ -1,4 +1,4 @@
-local wersja = "3.16.46"
+local wersja = "3.16.47"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -284,10 +284,12 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		
 		local function openchoose()
 			base.ClipsDescendants = false
-			switch.ClipsDescendants = false
+			local function clipf()
+				switch.ClipsDescendants = false
+			end
 			--print("opening ", switch.Size, " to ", openedswitchsize)
 			base.ZIndex = base.ZIndex + 1 
-			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2)
+			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2, false, clipf)
 		end
 		
 		selected.MouseButton1Click:Connect(openchoose)
