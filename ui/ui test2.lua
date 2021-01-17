@@ -1,4 +1,4 @@
-local wersja = "3.16.23"
+local wersja = "3.16.24"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -233,6 +233,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		title.TextColor3 = Color3.fromRGB(255, 255, 255)
 		title.Font = Enum.Font.SourceSans
 		title.BorderSizePixel = 0
+		title.TextSize = 14.000
 		
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 60, 0, 5)
@@ -254,10 +255,12 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.Size = UDim2.new(0, 100, 0, 25)
 		selected.Text = default or "Choose"
 		selected.Font = Enum.Font.SourceSans
+		seleted.TextSize = 14.000
+		
 		
 		local openedswitchsize = UDim2.new(100, 0, 0, 0)
 		for i = 1, #options do 
-			 openedswitchsize = openedswitchsize + UDim2.new(100, 0, 0, 15)
+			 openedswitchsize = openedswitchsize + UDim2.new(100, 0, 0, 25)
 		end
 		
 		local function callb()
@@ -277,7 +280,8 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			case.Parent = switch
 			case.Name = v.." swichcase"
 			case.Text = v
-			case.Size = UDim2.new(0, 100, 0, 15)
+			case.Size = UDim2.new(0, 100, 0, 25)
+			case.TextSize = 14.000
 			
 			local function choosef()
 				selected.Text = case.Text
