@@ -1,17 +1,20 @@
 local wersja = "3.16.32"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
--- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
-	-- _G.test1 = state  
-    -- while _G.test1 == true and wait(1) do
-		-- print("test1", _G.test1) 		-- co robic 
-    -- end
--- end)
+--[[
+ library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
+	_G.test1 = state  
+    while _G.test1 == true and wait(1) do
+		print("test1", _G.test1) 		-- co robic 
+    end
+ end)
 
---  library:CreateButton("Gay", function()  -- A1 button text
---  	print("yes") -- what to do on click 
---  end)
-	
+ library:CreateButton("Gay", function()  -- A1 button text
+ 	print("yes") -- what to do on click 
+ end)
+ 
+--]]
+
 function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
 
 local library = {}
