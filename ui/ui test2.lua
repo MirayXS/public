@@ -1,4 +1,4 @@
-local wersja = "3.16.33"
+local wersja = "3.16.34"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -230,15 +230,17 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		base.Name = "switchbase"
 		base.Parent= body
 		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		base.Size = UDim2.new(0, 165, 0, 35)
+		base.Size = UDim2.new(0, 200, 0, 35)
 		base.BorderColor3 = Color3.new(bordcol)
 		
 		local title = Instance.new("TextLabel")
+		title.Name = "switchname"
 		title.Parent = base
 		title.BackgroundTransparency = 1 
 		title.Size = base.Size
 		title.Text = name
 		title.TextColor3 = Color3.fromRGB(255, 255, 255)
+		title.TextXAlignment = Enum.TextXAlignment.Left
 		title.Font = Enum.Font.SourceSans
 		title.BorderSizePixel = 0
 		title.TextSize = 14.000
@@ -246,7 +248,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 60, 0, 5)
 		switch.Size = UDim2.new(0, 100, 0, 0)
-		local openedswitchsize = UDim2.new(0, 100, 0, 0)
 		switch.Transparency = 1
 		switch.Parent = base
 		switch.Name = "switchframe"
@@ -280,6 +281,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local function openchoose()
 			base.ClipsDescendants = false
 			--print("opening ", switch.Size, " to ", openedswitchsize)
+			base.ZIndex = base.ZIndex + 1 
 			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2)
 		end
 		
@@ -301,6 +303,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 					base.ClipsDescendants = true
 				end
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
+				base.ZIndex = base.ZIndex - 1
 				callb()
 				--print("SELECTED"..case.Text)
 			end
