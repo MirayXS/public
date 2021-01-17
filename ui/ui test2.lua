@@ -1,4 +1,4 @@
-local wersja = "3.16.34"
+local wersja = "3.16.35"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -301,9 +301,9 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 				selected.Text = case.Text
 				local function clip()
 					base.ClipsDescendants = true
+					base.ZIndex = base.ZIndex - 1
 				end
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
-				base.ZIndex = base.ZIndex - 1
 				callb()
 				--print("SELECTED"..case.Text)
 			end

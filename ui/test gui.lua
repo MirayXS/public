@@ -19,6 +19,9 @@ library:CreateButton("Gay", function()
     print("yes")
     end)
 
-library:Createswitch("nazwa", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
+library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
     print("yes ", selection)
-end,"bedo noob")
+end,"default :)")
+
+
+
