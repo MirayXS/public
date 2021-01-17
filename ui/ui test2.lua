@@ -1,4 +1,4 @@
-local wersja = "3.16.29"
+local wersja = "3.16.30"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -226,6 +226,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		base.Parent= body
 		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		base.Size = UDim2.new(0, 165, 0, 35)
+		base.BorderColor3 = Color3.new(bordcol)
 		
 		local title = Instance.new("TextLabel")
 		title.Parent = base
@@ -246,6 +247,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		switch.Name = "switchframe"
 		switch.ZIndex = 101
 		switch.ClipsDescendants = true
+		switch.BorderColor3 = Color3.new(bordcol)
 		
 		local switchpositioner = Instance.new("UIListLayout")
 		switchpositioner.Parent = switch
@@ -258,6 +260,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.Text = default or "Choose"
 		selected.Font = Enum.Font.SourceSans
 		selected.TextSize = 14.000
+		selected.BorderColor3 = Color3.new(bordcol)
 		
 		
 		local openedswitchsize = UDim2.new(100, 0, 0, 0)
@@ -285,6 +288,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			case.Text = v
 			case.Size = UDim2.new(0, 100, 0, 25)
 			case.TextSize = 14.000
+			case.BorderColor3 = Color3.new(bordcol)
 			
 			local function choosef()
 				selected.Text = case.Text
