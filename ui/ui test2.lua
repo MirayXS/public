@@ -1,4 +1,4 @@
-local wersja = "3.16.36"
+local wersja = "3.16.37"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 --[[
@@ -265,7 +265,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		local selected = Instance.new("TextButton")
 		selected.Name = "openselectionbutton"
 		selected.Parent = base
-		selected.Position = UDim2.new(0, 60, 0, 5)
+		selected.Position = UDim2.new(0, 90, 0, 5)
 		selected.Size = UDim2.new(0, 100, 0, 25)
 		selected.Text = default or "Choose"
 		selected.Font = Enum.Font.SourceSans
