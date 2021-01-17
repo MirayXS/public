@@ -1,4 +1,4 @@
-local wersja = "3.16.26"
+local wersja = "3.16.27"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
 
 -- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
@@ -218,6 +218,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		callback = callback or function() end
 		local default = default or "Choose"
 		
+		y = y + 35
 		body.Size = body.Size + UDim2.new(0,0,0,35)
 		
 		local base = Instance.new("Frame")
