@@ -139,7 +139,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	function library:CreateButton(nazwa, callback)
 		local callback = callback or function() end
 		
-		print("dodaje przycisk "..nazwa)
+		--print("dodaje przycisk "..nazwa)
 		local button = Instance.new("TextButton")
 		
 		body.Size = body.Size + UDim2.new(0,0,0,35)
@@ -288,13 +288,13 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 				selected.Text = case.Text
 				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2)
 				callb()
-				print("SELECTED"..case.Text)
+				--print("SELECTED"..case.Text)
 			end
 			case.MouseButton1Click:Connect(choosef)
 		end
 		
 		
-		print("done")
+		--print("done")
 	end
 	
 	return nooblib
