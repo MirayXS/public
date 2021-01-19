@@ -1,4 +1,4 @@
-local wersja = "3.17.8"
+local wersja = "3.17.9"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -349,8 +349,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			boxframe.BackgroundTransparency = 1
 			boxframe.BorderColor3 = Color3.new(bordcol)
-			local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
-			addDrag(boxframe)
 			print("frameadded")
 		
 			local titlebox = Instance.new("TextLabel")
@@ -358,15 +356,18 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			titlebox.Size = UDim2.new(0, sizex, 0, 20)
 			titlebox.Parent = boxframe
+			titlebox.Name = "titlebox"
 			titlebox.Position= UDim2.new(0,0,0,-20)
 			titlebox.BackgroundTransparency = transp
 			titlebox.Text = name or "nodata"
 			titlebox.BorderColor3 = Color3.new(bordcol)
-			--addDrag(titlebox)
+			local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
+			addDrag(titlebox)
 			print("titlebox added")
 		
 			local textbox = Instance.new("TextLabel")
 			textbox.Parent = boxframe
+			textbox.Name = "databox"
 			textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
 			textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			textbox.Position = UDim2.new(0,0,0,0)
@@ -374,8 +375,19 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			textbox.BackgroundTransparency = transp
 			textbox.BorderColor3 = Color3.new(bordcol)
 			textbox.TextXAlignment = Enum.TextXAlignment.Left
-			textbox.TextYAlignment = Enum.TextXAlignment.Top
+			textbox.TextYAlignment = Enum.TextYAlignment.Top
 			print("textboxcontetadded")
+
+			while wait() do
+				local succes, result = pcall(gettextfunc)
+				if succes then
+					textbox.Text = result
+				else
+					print("DATA FUNCTION ERROR!")
+				end
+			end
+
+
 		end
 
 		--print("done")
