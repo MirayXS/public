@@ -1,4 +1,4 @@
-local wersja = "3.17.16"
+local wersja = "3.17.17"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -27,23 +27,32 @@ bordcol={120, 120,120}
 function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local xposoff = 0
 	local yposoff = 0
-
-	x = x or 200
-	y = y or 0
-	if xpos ~= nil and xpos > 5 then -- pozycja x
+	if xpos:IsA("UDim") then 
+		xposoff = xpos.Offset
+		xpos = xpos.Scale
+	else
+		if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
 			xpos = 0
-	else
-		xpos = xpos or 0.5
+		else
+			xpos = xpos or 0.5
+		end
 	end
 
-	if ypos ~= nil and ypos > 5 then -- pozycja y
+	if ypos:IsA("UDim") then 
+		yposoff = ypos.Offset
+		ypos = ypos.Scale
+	else
+		if ypos ~= nil and ypos > 5 then -- pozycja y
 			yposoff = ypos
 			ypos = 0
-	else
-		xpos = xpos or 0.15
+		else
+			ypos = ypos or 0.15
+		end
 	end
 
+	x = x or 200 --wymiary
+	y = y or 0 -- wymiary
 
 	local ScreenGui = Instance.new("ScreenGui")
 	local body = Instance.new("Frame")
