@@ -354,11 +354,11 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			titlebox.Size = UDim2.new(0, sizex, 0, 20)
 			titlebox.Parent = boxframe
-			titlebox.Position=boxframe.Position + UDim2(0,0,0,-20)
+			titlebox.Position= UDim2.new(0,0,0,-20)
 			titlebox.BackgroundTransparency = transp
 			titlebox.Text = name or "nodata"
 			titlebox.BorderColor3 = Color3.new(bordcol)
-			addDrag(titlebox)
+			--addDrag(titlebox)
 			print("titlebox added")
 		
 			local textbox = Instance.new("TextBox")
