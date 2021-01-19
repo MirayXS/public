@@ -345,15 +345,15 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titileboxframe.Parent = topper.Parent
 			titileboxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
-			titileboxframe.Name = "titleboxframe"
+			titileboxframe.Name = "titleboxframe Frame"
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			titileboxframe.BackgroundTransparency = 1
 			titileboxframe.BorderColor3 = Color3.new(bordcol)
 			local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
-			addDrag(titleboxframe)
+			addDrag(titileboxframe)
 
 			local boxframe = Instance.new("Frame")
-			boxframe.Parent = titleboxframe
+			boxframe.Parent = titileboxframe
 			boxframe.Position = boxframe.Position + UDim2.new(0,0,0,-20)
 			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
 			boxframe.Name = "textboxframe"
@@ -365,9 +365,9 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
 			titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			titlebox.Size = UDim2.new(0, sizex, 0, 20)
-			titlebox.Parent = boxframe
+			titlebox.Parent = titileboxframe
 			titlebox.Name = "titlebox"
-			titlebox.Position= UDim2.new(0,0,0,-20)
+			titlebox.Position= UDim2.new(0,0,0,0)
 			titlebox.BackgroundTransparency = transp
 			titlebox.Text = name or "nodata"
 			titlebox.BorderColor3 = Color3.new(bordcol)
