@@ -31,7 +31,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local yposoff = 0
 	local function isnotnumber(valuetocheck)
 		local isnubmer = pcall(function ()
-			if valuetocheck:IsA("Number") then
+			if valuetocheck - 1 then
 				return true
 			end
 		end)
