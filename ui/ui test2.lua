@@ -25,6 +25,7 @@ local library = {}
 bordcol={120, 120,120}
 
 function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
+	xpos = xpos or 
 	local xposoff = 0
 	local yposoff = 0
 	if xpos:IsA("UDim") then 
