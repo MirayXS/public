@@ -1,4 +1,4 @@
-local wersja = "3.17.21"
+local wersja = "3.17.23"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -25,7 +25,6 @@ local library = {}
 bordcol={120, 120,120}
 
 function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
-
 	function convertpos(xpos, ypos) -- pass number or UDim returns 2 UDim
 		xpos = xpos or 400
 		ypos = ypos or 200
@@ -67,7 +66,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		return finalcov
 	end
 
-
 	x = x or 200 --wymiary
 	y = y or 0 -- wymiary
 
@@ -89,7 +87,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	topper.Position = convertpos(xpos, xposoff, ypos, yposoff)
+	topper.Position = convertpos(xpos, ypos)
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
 	topper.Transparency = 0.1
@@ -368,7 +366,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			
 			local titileboxframe = Instance.new("Frame")
 			titileboxframe.Parent = topper.Parent
-			titileboxframe.Position = convertpos(xpos, xposoff, ypos, yposoff)
+			titileboxframe.Position = convertpos(xpos, ypos)
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
 			titileboxframe.Name = "titileboxframe Frame"
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
