@@ -1,0 +1,14 @@
+{
+    "Lua.diagnostics.globals": [
+        "Enum",
+        "UDim2",
+        "Instance",
+        "Color3",
+        "wait",
+        "game"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global",
+        "undefined-global"
+    ]
+}
