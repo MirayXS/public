@@ -353,7 +353,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 
 			local boxframe = Instance.new("Frame")
 			boxframe.Parent = titileboxframe
-			boxframe.Position = boxframe.Position + UDim2.new(0,0,0,20)
+			boxframe.Position = titleboxframe + UDim2.new(0,0,0,-20)
 			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
 			boxframe.Name = "textboxframe"
 			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
