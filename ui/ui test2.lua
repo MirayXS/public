@@ -1,4 +1,4 @@
-local wersja = "3.17"
+local wersja = "3.17.1"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -140,186 +140,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		end
 	end)
 
-
-
-	local nooblib={}
-
-	-- classese ?
-	function library:CreateButton(nazwa, callback)
-		local callback = callback or function() end
-
-		--print("dodaje przycisk "..nazwa)
-		local button = Instance.new("TextButton")
-
-		body.Size = body.Size + UDim2.new(0,0,0,35)
-		y = y + 35
-
-		button.Name = nazwa
-		button.Text = nazwa
-		button.Parent = body
-		button.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		button.Size = UDim2.new(0, 200, 0, 35)
-		button.Font = Enum.Font.SourceSans
-		button.TextColor3 = Color3.fromRGB(255, 255, 255)
-		button.TextSize = 14.000
-		button.BorderColor3 = Color3.new(bordcol)
-		button.TextXAlignment = Enum.TextXAlignment.Left
-
-		button.MouseButton1Up:Connect(function()
-			pcall(callback)
-		end)
-	end
-
-	function library:CreateToggle(text, callback)
-		local actions = {}
-		local enabled = false
-
-		text = text or "New Toggle"
-		callback = callback or function() end
-
-		local ToggleButton = Instance.new("TextLabel")
-		local OnOffToggle = Instance.new("TextButton")
-
-		y = y + 35
-		body.Size = body.Size + UDim2.new(0,0,0,35)
-
-		ToggleButton.Name = "ToggleButton"
-		ToggleButton.Parent = body
-		ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		ToggleButton.Position = UDim2.new(0, 0, 0, 0)
-		ToggleButton.Size = UDim2.new(0, 165, 0, 35)
-		ToggleButton.Font = Enum.Font.SourceSans
-		ToggleButton.Text = text
-		ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		ToggleButton.TextSize = 14.000
-		ToggleButton.TextWrapped = true
-		ToggleButton.TextXAlignment = Enum.TextXAlignment.Left
-		ToggleButton.BorderColor3 = Color3.new(bordcol)
-
-		OnOffToggle.Name = "OnOffToggle"
-		OnOffToggle.Parent = ToggleButton
-		OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
-		OnOffToggle.Position = UDim2.new(0, 165, 0, 0)
-		OnOffToggle.Size = UDim2.new(0, 35, 0, 35)
-		OnOffToggle.Font = Enum.Font.SourceSans
-		OnOffToggle.Text = "off"
-		OnOffToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
-		OnOffToggle.TextSize = 14.000
-		OnOffToggle.BorderColor3 = Color3.new(bordcol)
-
-		local function Fire()
-			enabled = not enabled
-			if enabled == true then
-				OnOffToggle.Text = "on" 
-				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
-			else
-				OnOffToggle.Text = "off"
-				OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
-			end
-			pcall(callback, enabled)
-		end
-
-		OnOffToggle.MouseButton1Up:Connect(Fire)
-	end
-
-	function library:Createswitch(sname, options, callback, default)
-		sname = sname or "switchname"
-		callback = callback or function() end
-		local default = default or "Choose"
-
-		y = y + 35
-		body.Size = body.Size + UDim2.new(0,0,0,35)
-
-		local base = Instance.new("Frame")
-		base.Name = "switchbase"
-		base.Parent= body
-		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		base.Size = UDim2.new(0, 200, 0, 35)
-		base.BorderColor3 = Color3.new(bordcol)
-
-		local title = Instance.new("TextLabel")
-		title.Name = "switchtitle"
-		title.Parent = base
-		title.BackgroundTransparency = 1
-		title.Size = base.Size
-		title.TextColor3 = Color3.fromRGB(255, 255, 255)
-		title.TextXAlignment = Enum.TextXAlignment.Left
-		title.Font = Enum.Font.SourceSans
-		title.BorderSizePixel = 0
-		title.TextSize = 14.000
-		title.Text = sname
-
-		local switch = Instance.new("Frame")
-		switch.Position =  UDim2.new(0, 90, 0, 5)
-		switch.Size = UDim2.new(0, 100, 0, 0)
-		switch.Transparency = 1
-		switch.Parent = base
-		switch.Name = "switchframe"
-		switch.ZIndex = 101
-		switch.ClipsDescendants = true
-		switch.BorderColor3 = Color3.new(bordcol)
-
-		local switchpositioner = Instance.new("UIListLayout")
-		switchpositioner.Parent = switch
-
-		local selected = Instance.new("TextButton")
-		selected.Name = "openselectionbutton"
-		selected.Parent = base
-		selected.Position = UDim2.new(0, 90, 0, 5)
-		selected.Size = UDim2.new(0, 101, 0, 25)
-		selected.Text = default or "Choose"
-		selected.Font = Enum.Font.SourceSans
-		selected.TextSize = 14.000
-		selected.BorderColor3 = Color3.new(bordcol)
-
-
-		local openedswitchsize = UDim2.new(100, 0, 0, 1)
-		for i = 1, #options do
-			 openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 25)
-		end
-
-		local function callb()
-			pcall(callback, selected.Text)
-		end
-
-		local function openchoose()
-			base.ClipsDescendants = false
-			local function clipf()
-				switch.ClipsDescendants = false
-			end
-			--print("opening ", switch.Size, " to ", openedswitchsize)
-			base.ZIndex = base.ZIndex + 1
-			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2, false, clipf)
-		end
-
-		selected.MouseButton1Click:Connect(openchoose)
-
-		for i, v in pairs(options) do
-			local case = Instance.new("TextButton")
-			case.Font = Enum.Font.SourceSans
-			case.Parent = switch
-			case.Name = v.." swichcase"
-			case.Text = v
-			case.Size = UDim2.new(0, 100, 0, 25)
-			case.TextSize = 14.000
-			case.BorderColor3 = Color3.new(bordcol)
-
-			local function choosef()
-				selected.Text = case.Text
-				local function clip()
-					base.ClipsDescendants = true
-					base.ZIndex = base.ZIndex - 1
-				end
-				switch.ClipsDescendants = true
-				switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
-				callb()
-				--print("SELECTED"..case.Text)
-			end
-			case.MouseButton1Click:Connect(choosef)
-		end
-		callb()
-	end
-
 	function CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
 		print("starttextbox")
 		sizex = sizex or 200
@@ -343,9 +163,14 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			xpos = xpos or 0.15
 		end
 		print("textboxdataloaded")
+		local textboxscreengui = Instance.new("ScreenGui")
+		textboxscreengui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		textboxscreengui.ResetOnSpawn = false
+		textboxscreengui.DisplayOrder = 100
+		textboxscreengui.Name = "textboxgui"..name
 
 		local boxframe = Instance.new("Frame")
-		boxframe.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		boxframe.Parent = textboxscreengui
 		boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
 		boxframe.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
@@ -378,9 +203,186 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		textbox.BackgroundTransparency = transp
 		textbox.BorderColor3 = Color3.new(bordcol)
 		print("textboxcontetadded")
-
 	end
-	--print("done")
+
+	local nooblib={}
+		-- classese ?
+		function library:CreateButton(nazwa, callback)
+			local callback = callback or function() end
+
+			--print("dodaje przycisk "..nazwa)
+			local button = Instance.new("TextButton")
+
+			body.Size = body.Size + UDim2.new(0,0,0,35)
+			y = y + 35
+
+			button.Name = nazwa
+			button.Text = nazwa
+			button.Parent = body
+			button.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+			button.Size = UDim2.new(0, 200, 0, 35)
+			button.Font = Enum.Font.SourceSans
+			button.TextColor3 = Color3.fromRGB(255, 255, 255)
+			button.TextSize = 14.000
+			button.BorderColor3 = Color3.new(bordcol)
+			button.TextXAlignment = Enum.TextXAlignment.Left
+
+			button.MouseButton1Up:Connect(function()
+				pcall(callback)
+			end)
+		end
+
+		function library:CreateToggle(text, callback)
+			local actions = {}
+			local enabled = false
+
+			text = text or "New Toggle"
+			callback = callback or function() end
+
+			local ToggleButton = Instance.new("TextLabel")
+			local OnOffToggle = Instance.new("TextButton")
+
+			y = y + 35
+			body.Size = body.Size + UDim2.new(0,0,0,35)
+
+			ToggleButton.Name = "ToggleButton"
+			ToggleButton.Parent = body
+			ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+			ToggleButton.Position = UDim2.new(0, 0, 0, 0)
+			ToggleButton.Size = UDim2.new(0, 165, 0, 35)
+			ToggleButton.Font = Enum.Font.SourceSans
+			ToggleButton.Text = text
+			ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			ToggleButton.TextSize = 14.000
+			ToggleButton.TextWrapped = true
+			ToggleButton.TextXAlignment = Enum.TextXAlignment.Left
+			ToggleButton.BorderColor3 = Color3.new(bordcol)
+
+			OnOffToggle.Name = "OnOffToggle"
+			OnOffToggle.Parent = ToggleButton
+			OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+			OnOffToggle.Position = UDim2.new(0, 165, 0, 0)
+			OnOffToggle.Size = UDim2.new(0, 35, 0, 35)
+			OnOffToggle.Font = Enum.Font.SourceSans
+			OnOffToggle.Text = "off"
+			OnOffToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+			OnOffToggle.TextSize = 14.000
+			OnOffToggle.BorderColor3 = Color3.new(bordcol)
+
+			local function Fire()
+				enabled = not enabled
+				if enabled == true then
+					OnOffToggle.Text = "on" 
+					OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+				else
+					OnOffToggle.Text = "off"
+					OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+				end
+				pcall(callback, enabled)
+			end
+
+			OnOffToggle.MouseButton1Up:Connect(Fire)
+		end
+
+		function library:Createswitch(sname, options, callback, default)
+			sname = sname or "switchname"
+			callback = callback or function() end
+			local default = default or "Choose"
+
+			y = y + 35
+			body.Size = body.Size + UDim2.new(0,0,0,35)
+
+			local base = Instance.new("Frame")
+			base.Name = "switchbase"
+			base.Parent= body
+			base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+			base.Size = UDim2.new(0, 200, 0, 35)
+			base.BorderColor3 = Color3.new(bordcol)
+
+			local title = Instance.new("TextLabel")
+			title.Name = "switchtitle"
+			title.Parent = base
+			title.BackgroundTransparency = 1
+			title.Size = base.Size
+			title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			title.TextXAlignment = Enum.TextXAlignment.Left
+			title.Font = Enum.Font.SourceSans
+			title.BorderSizePixel = 0
+			title.TextSize = 14.000
+			title.Text = sname
+
+			local switch = Instance.new("Frame")
+			switch.Position =  UDim2.new(0, 90, 0, 5)
+			switch.Size = UDim2.new(0, 100, 0, 0)
+			switch.Transparency = 1
+			switch.Parent = base
+			switch.Name = "switchframe"
+			switch.ZIndex = 101
+			switch.ClipsDescendants = true
+			switch.BorderColor3 = Color3.new(bordcol)
+
+			local switchpositioner = Instance.new("UIListLayout")
+			switchpositioner.Parent = switch
+
+			local selected = Instance.new("TextButton")
+			selected.Name = "openselectionbutton"
+			selected.Parent = base
+			selected.Position = UDim2.new(0, 90, 0, 5)
+			selected.Size = UDim2.new(0, 101, 0, 25)
+			selected.Text = default or "Choose"
+			selected.Font = Enum.Font.SourceSans
+			selected.TextSize = 14.000
+			selected.BorderColor3 = Color3.new(bordcol)
+
+
+			local openedswitchsize = UDim2.new(100, 0, 0, 1)
+			for i = 1, #options do
+				openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 25)
+			end
+
+			local function callb()
+				pcall(callback, selected.Text)
+			end
+
+			local function openchoose()
+				base.ClipsDescendants = false
+				local function clipf()
+					switch.ClipsDescendants = false
+				end
+				--print("opening ", switch.Size, " to ", openedswitchsize)
+				base.ZIndex = base.ZIndex + 1
+				switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2, false, clipf)
+			end
+
+			selected.MouseButton1Click:Connect(openchoose)
+
+			for i, v in pairs(options) do
+				local case = Instance.new("TextButton")
+				case.Font = Enum.Font.SourceSans
+				case.Parent = switch
+				case.Name = v.." swichcase"
+				case.Text = v
+				case.Size = UDim2.new(0, 100, 0, 25)
+				case.TextSize = 14.000
+				case.BorderColor3 = Color3.new(bordcol)
+
+				local function choosef()
+					selected.Text = case.Text
+					local function clip()
+						base.ClipsDescendants = true
+						base.ZIndex = base.ZIndex - 1
+					end
+					switch.ClipsDescendants = true
+					switch:TweenSize(UDim2.new(0, 100, 0, 0), "In", "Linear", 0.2, false, clip)
+					callb()
+					--print("SELECTED"..case.Text)
+				end
+				case.MouseButton1Click:Connect(choosef)
+			end
+			callb()
+		end
+
+		--print("done")
 	return nooblib
 end
 print("UI "..wersja," loaded!")
