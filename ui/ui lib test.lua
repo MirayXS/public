@@ -29,28 +29,37 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	ypos = ypos or 200
 	local xposoff = 0
 	local yposoff = 0
-	if xpos:IsA("Number") then 
+	local function isnotnumber(valuetocheck)
+		local isnubmer = pcall(function ()
+			if valuetocheck:IsA("Number") then
+				return true
+			end
+		end)
+		if isnubmer then return false
+		else return true
+	end
+	if isnotnumber(xpos) then 
+		xposoff = xpos.Offset
+		xpos = xpos.Scale
+	else
 		if xpos ~= nil and xpos > 5 then -- pozycja x
 			xposoff = xpos
 			xpos = 0
 		else
 			xpos = xpos or 0.5
 		end
-	else
-		xposoff = xpos.Offset
-		xpos = xpos.Scale
 	end
 
-	if ypos:IsA("Number") then 
+	if	isnotnumber(ypos) then 
+		yposoff = ypos.Offset
+		ypos = ypos.Scale
+	else
 		if ypos ~= nil and ypos > 5 then -- pozycja y
 			yposoff = ypos
 			ypos = 0
 		else
 			ypos = ypos or 0.15
 		end
-	else
-		yposoff = ypos.Offset
-		ypos = ypos.Scale
 	end
 
 	x = x or 200 --wymiary
