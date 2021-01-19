@@ -319,7 +319,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		function library:CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
 			xpos = xpos or 0.4
 			ypos = ypos or 0.8
-			print("starttextbox")
 			sizex = sizex or 200
 			sizey = sizey or 100
 			transp = transp or 0
