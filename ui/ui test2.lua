@@ -1,4 +1,4 @@
-local wersja = "3.17.1"
+local wersja = "3.17.2"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -23,6 +23,71 @@ function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()loca
 
 local library = {}
 bordcol={120, 120,120}
+
+function library:CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
+	print("starttextbox")
+	sizex = sizex or 200
+	sizey = sizey or 100
+	transp = transp or 0
+	local xposoff = 0
+	local yposoff = 0
+	x = x or 200
+	y = y or 0
+	if xpos ~= nil and xpos > 5 then -- pozycja x
+			xposoff = xpos
+			xpos = 0
+	else
+		xpos = xpos or 0.5
+	end
+
+	if ypos ~= nil and ypos > 5 then -- pozycja y
+			yposoff = ypos
+			ypos = 0
+	else
+		xpos = xpos or 0.15
+	end
+	print("textboxdataloaded")
+	local textboxscreengui = Instance.new("ScreenGui")
+	textboxscreengui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	textboxscreengui.ResetOnSpawn = false
+	textboxscreengui.DisplayOrder = 100
+	textboxscreengui.Name = "textboxgui"..name
+
+	local boxframe = Instance.new("Frame")
+	boxframe.Parent = textboxscreengui
+	boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
+	boxframe.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
+	boxframe.ResetOnSpawn = false
+	boxframe.DisplayOrder = 100
+	boxframe.Name = "textboxframe"
+	boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	boxframe.BackgroundTransparency = 1
+	boxframe.BorderColor3 = Color3.new(bordcol)
+	print("frameadded")
+
+	local titlebox = Instance.new("TextBox")
+	titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	titlebox.Size = UDim2.new(0, sizex, 0, 20)
+	titlebox.Parent = boxframe
+	titlebox.Position=boxframe.Position + UDim2(0,0,0,-20)
+	titlebox.BackgroundTransparency = transp
+	titlebox.Text = name or "nodata"
+	titlebox.BorderColor3 = Color3.new(bordcol)
+	addDrag(titlebox)
+	print("titlebox added")
+
+	local textbox = Instance.new("TextBox")
+	textbox.Parent = boxframe
+	textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	textbox.Position = UDim2.new(0,0,0,0)
+	textbox.Size =  UDim2.new(0, sizex, 0, sizey)
+	textbox.BackgroundTransparency = transp
+	textbox.BorderColor3 = Color3.new(bordcol)
+	print("textboxcontetadded")
+end
 
 function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local xposoff = 0
@@ -139,71 +204,6 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			hider.Rotation = 90
 		end
 	end)
-
-	function CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
-		print("starttextbox")
-		sizex = sizex or 200
-		sizey = sizey or 100
-		transp = transp or 0
-		local xposoff = 0
-		local yposoff = 0
-		x = x or 200
-		y = y or 0
-		if xpos ~= nil and xpos > 5 then -- pozycja x
-				xposoff = xpos
-				xpos = 0
-		else
-			xpos = xpos or 0.5
-		end
-
-		if ypos ~= nil and ypos > 5 then -- pozycja y
-				yposoff = ypos
-				ypos = 0
-		else
-			xpos = xpos or 0.15
-		end
-		print("textboxdataloaded")
-		local textboxscreengui = Instance.new("ScreenGui")
-		textboxscreengui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-		textboxscreengui.ResetOnSpawn = false
-		textboxscreengui.DisplayOrder = 100
-		textboxscreengui.Name = "textboxgui"..name
-
-		local boxframe = Instance.new("Frame")
-		boxframe.Parent = textboxscreengui
-		boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
-		boxframe.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-		boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
-		boxframe.ResetOnSpawn = false
-		boxframe.DisplayOrder = 100
-		boxframe.Name = "textboxframe"
-		boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		boxframe.BackgroundTransparency = 1
-		boxframe.BorderColor3 = Color3.new(bordcol)
-		print("frameadded")
-
-		local titlebox = Instance.new("TextBox")
-		titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
-		titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		titlebox.Size = UDim2.new(0, sizex, 0, 20)
-		titlebox.Parent = boxframe
-		titlebox.Position=boxframe.Position + UDim2(0,0,0,-20)
-		titlebox.BackgroundTransparency = transp
-		titlebox.Text = name or "nodata"
-		titlebox.BorderColor3 = Color3.new(bordcol)
-		addDrag(titlebox)
-		print("titlebox added")
-
-		local textbox = Instance.new("TextBox")
-		textbox.Parent = boxframe
-		textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
-		textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-		textbox.Position = UDim2.new(0,0,0,0)
-		textbox.Size =  UDim2.new(0, sizex, 0, sizey)
-		textbox.BackgroundTransparency = transp
-		textbox.BorderColor3 = Color3.new(bordcol)
-		print("textboxcontetadded")
-	end
 
 	local nooblib={}
 		-- classese ?
