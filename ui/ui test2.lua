@@ -1,18 +1,18 @@
-local wersja = "3.16.48"
-print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje 
+local wersja = "3.17"
+print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną 
-	_G.test1 = state  
+ library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną
+	_G.test1 = state
     while _G.test1 == true and wait(1) do
-		print("test1", _G.test1) 		-- co robic 
+		print("test1", _G.test1) 		-- co robic
     end
  end)
 
  library:CreateButton("Gay", function()  -- A1 button text
- 	print("yes") -- what to do on click 
+ 	print("yes") -- what to do on click
  end)
- 
+
  library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
     print("yes ", selection)
 end,"default :)")
@@ -27,7 +27,7 @@ bordcol={120, 120,120}
 function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local xposoff = 0
 	local yposoff = 0
-	
+
 	x = x or 200
 	y = y or 0
 	if xpos ~= nil and xpos > 5 then -- pozycja x
@@ -36,7 +36,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	else
 		xpos = xpos or 0.5
 	end
-	
+
 	if ypos ~= nil and ypos > 5 then -- pozycja y
 			yposoff = ypos
 			ypos = 0
@@ -44,7 +44,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		xpos = xpos or 0.15
 	end
 
-	
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local body = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -53,13 +53,13 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	local hider = Instance.new("TextButton")
 	local deleter = Instance.new("TextButton")
 	addDrag(topper)
-	
+
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.DisplayOrder = 100
 	ScreenGui.Name = nazwa
-	
+
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
@@ -67,7 +67,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
 	topper.Transparency = 0.1
-	
+
 	body.Name = "body"
 	body.Parent = topper
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
@@ -88,7 +88,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	nazwaa.TextColor3 = Color3.fromRGB(255, 255, 255)
 	nazwaa.TextSize = 14.000
 	nazwaa.Text = nazwa
-	
+
 	deleter.Name = "deleter" -- deleter
 	deleter.Parent = topper
 	deleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
@@ -101,11 +101,11 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	deleter.BorderColor3 = Color3.new(bordcol)
 	deleter.BackgroundTransparency = 0.1
 	deleter.Visible = false
-	
+
 	deleter.MouseButton1Click:Connect(function()
 		ScreenGui:Destroy()
 	end)
-	
+
 	hider.Name = "hider"
 	hider.Parent = topper
 	hider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
@@ -137,23 +137,23 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2, false, nclip)
 			hider.Rotation = 90
-		end	
+		end
 	end)
-	
-	
-	
+
+
+
 	local nooblib={}
-	
+
 	-- classese ?
 	function library:CreateButton(nazwa, callback)
 		local callback = callback or function() end
-		
+
 		--print("dodaje przycisk "..nazwa)
 		local button = Instance.new("TextButton")
-		
+
 		body.Size = body.Size + UDim2.new(0,0,0,35)
 		y = y + 35
-		
+
 		button.Name = nazwa
 		button.Text = nazwa
 		button.Parent = body
@@ -164,25 +164,25 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		button.TextSize = 14.000
 		button.BorderColor3 = Color3.new(bordcol)
 		button.TextXAlignment = Enum.TextXAlignment.Left
-		
+
 		button.MouseButton1Up:Connect(function()
 			pcall(callback)
 		end)
 	end
-	
+
 	function library:CreateToggle(text, callback)
 		local actions = {}
 		local enabled = false
-		
+
 		text = text or "New Toggle"
 		callback = callback or function() end
-		
+
 		local ToggleButton = Instance.new("TextLabel")
 		local OnOffToggle = Instance.new("TextButton")
-	
+
 		y = y + 35
 		body.Size = body.Size + UDim2.new(0,0,0,35)
-		
+
 		ToggleButton.Name = "ToggleButton"
 		ToggleButton.Parent = body
 		ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
@@ -206,37 +206,37 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		OnOffToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
 		OnOffToggle.TextSize = 14.000
 		OnOffToggle.BorderColor3 = Color3.new(bordcol)
-		
+
 		local function Fire()
 			enabled = not enabled
-			if enabled == true then 
+			if enabled == true then
 				OnOffToggle.Text = "on" 
 				OnOffToggle.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
-			else 
+			else
 				OnOffToggle.Text = "off"
 				OnOffToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
 			end
 			pcall(callback, enabled)
 		end
-		
+
 		OnOffToggle.MouseButton1Up:Connect(Fire)
 	end
-	
+
 	function library:Createswitch(sname, options, callback, default)
 		sname = sname or "switchname"
 		callback = callback or function() end
 		local default = default or "Choose"
-		
+
 		y = y + 35
 		body.Size = body.Size + UDim2.new(0,0,0,35)
-		
+
 		local base = Instance.new("Frame")
 		base.Name = "switchbase"
 		base.Parent= body
 		base.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 		base.Size = UDim2.new(0, 200, 0, 35)
 		base.BorderColor3 = Color3.new(bordcol)
-		
+
 		local title = Instance.new("TextLabel")
 		title.Name = "switchtitle"
 		title.Parent = base
@@ -248,7 +248,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		title.BorderSizePixel = 0
 		title.TextSize = 14.000
 		title.Text = sname
-		
+
 		local switch = Instance.new("Frame")
 		switch.Position =  UDim2.new(0, 90, 0, 5)
 		switch.Size = UDim2.new(0, 100, 0, 0)
@@ -258,10 +258,10 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		switch.ZIndex = 101
 		switch.ClipsDescendants = true
 		switch.BorderColor3 = Color3.new(bordcol)
-		
+
 		local switchpositioner = Instance.new("UIListLayout")
 		switchpositioner.Parent = switch
-		
+
 		local selected = Instance.new("TextButton")
 		selected.Name = "openselectionbutton"
 		selected.Parent = base
@@ -271,29 +271,29 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		selected.Font = Enum.Font.SourceSans
 		selected.TextSize = 14.000
 		selected.BorderColor3 = Color3.new(bordcol)
-		
-		
+
+
 		local openedswitchsize = UDim2.new(100, 0, 0, 1)
-		for i = 1, #options do 
+		for i = 1, #options do
 			 openedswitchsize = openedswitchsize + UDim2.new(0, 0, 0, 25)
 		end
-		
+
 		local function callb()
 			pcall(callback, selected.Text)
 		end
-		
+
 		local function openchoose()
 			base.ClipsDescendants = false
 			local function clipf()
 				switch.ClipsDescendants = false
 			end
 			--print("opening ", switch.Size, " to ", openedswitchsize)
-			base.ZIndex = base.ZIndex + 1 
+			base.ZIndex = base.ZIndex + 1
 			switch:TweenSize(openedswitchsize, "Out", "Linear", 0.2, false, clipf)
 		end
-		
+
 		selected.MouseButton1Click:Connect(openchoose)
-		
+
 		for i, v in pairs(options) do
 			local case = Instance.new("TextButton")
 			case.Font = Enum.Font.SourceSans
@@ -303,7 +303,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			case.Size = UDim2.new(0, 100, 0, 25)
 			case.TextSize = 14.000
 			case.BorderColor3 = Color3.new(bordcol)
-			
+
 			local function choosef()
 				selected.Text = case.Text
 				local function clip()
@@ -318,6 +318,59 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			case.MouseButton1Click:Connect(choosef)
 		end
 		callb()
+	end
+
+	function CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
+		sizex = sizex or 200
+		sizey = sizey or 100
+		local xposoff = 0
+		local yposoff = 0
+		x = x or 200
+		y = y or 0
+		if xpos ~= nil and xpos > 5 then -- pozycja x
+				xposoff = xpos
+				xpos = 0
+		else
+			xpos = xpos or 0.5
+		end
+
+		if ypos ~= nil and ypos > 5 then -- pozycja y
+				yposoff = ypos
+				ypos = 0
+		else
+			xpos = xpos or 0.15
+		end
+
+		local boxframe = Instance.new("Frame")
+		boxframe.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
+		boxframe.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
+		boxframe.ResetOnSpawn = false
+		boxframe.DisplayOrder = 100
+		boxframe.Name = "textboxframe"
+		boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		boxframe.BackgroundTransparency = 1
+
+		local titlebox = Instance.new("TextBox")
+		titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
+		titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		titlebox.Size = UDim2.new(0, sizex, 0, 20)
+		titlebox.Parent = boxframe
+		titlebox.Position=boxframe.Position + UDim2(0,0,0,-20)
+		titlebox.BackgroundTransparency = transp
+		titlebox.Text = name or "nodata"
+		
+		addDrag(titlebox)
+
+		local textbox = Instance.new("TextBox")
+		textbox.Parent = boxframe
+		textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+		textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		textbox.Position = UDim2.new(0,0,0,0)
+		textbox.Size =  UDim2.new(0, sizex, 0, sizey)
+		textbox.BackgroundTransparency = transp
+
 	end
 	--print("done")
 	return nooblib
