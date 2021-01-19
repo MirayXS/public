@@ -321,6 +321,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	end
 
 	function CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
+		print("starttextbox")
 		sizex = sizex or 200
 		sizey = sizey or 100
 		transp = transp or 0
@@ -341,6 +342,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		else
 			xpos = xpos or 0.15
 		end
+		print("textboxdataloaded")
 
 		local boxframe = Instance.new("Frame")
 		boxframe.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -353,6 +355,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		boxframe.BackgroundTransparency = 1
 		boxframe.BorderColor3 = Color3.new(bordcol)
+		print("frameadded")
 
 		local titlebox = Instance.new("TextBox")
 		titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -363,8 +366,8 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		titlebox.BackgroundTransparency = transp
 		titlebox.Text = name or "nodata"
 		titlebox.BorderColor3 = Color3.new(bordcol)
-
 		addDrag(titlebox)
+		print("titlebox added")
 
 		local textbox = Instance.new("TextBox")
 		textbox.Parent = boxframe
@@ -374,6 +377,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		textbox.Size =  UDim2.new(0, sizex, 0, sizey)
 		textbox.BackgroundTransparency = transp
 		textbox.BorderColor3 = Color3.new(bordcol)
+		print("textboxcontetadded")
 
 	end
 	--print("done")
