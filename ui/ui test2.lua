@@ -1,4 +1,4 @@
-local wersja = "3.17.10"
+local wersja = "3.17.11"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -340,19 +340,10 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			else
 				xpos = xpos or 0.15
 			end
-
-			local boxframe = Instance.new("Frame")
-			boxframe.Parent = topper.Parent
-			boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
-			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
-			boxframe.Name = "textboxframe"
-			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			boxframe.BackgroundTransparency = 1
-			boxframe.BorderColor3 = Color3.new(bordcol)
-
+			
 			local titileboxframe = Instance.new("Frame")
 			titileboxframe.Parent = topper.Parent
-			titileboxframe.Position = boxframe + UDim2.new(0,0,0,-20)
+			titileboxframe.Position = boxframe.Position + UDim2.new(0,0,0,-20)
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
 			titileboxframe.Name = "titleboxframe"
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -360,6 +351,15 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titileboxframe.BorderColor3 = Color3.new(bordcol)
 			local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
 			addDrag(titleboxframe)
+
+			local boxframe = Instance.new("Frame")
+			boxframe.Parent = titleboxframe
+			boxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
+			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
+			boxframe.Name = "textboxframe"
+			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			boxframe.BackgroundTransparency = 1
+			boxframe.BorderColor3 = Color3.new(bordcol)
 
 			local titlebox = Instance.new("TextLabel")
 			titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
