@@ -1,4 +1,4 @@
-local wersja = "3.17.18"
+local wersja = "3.17.19"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -36,7 +36,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 		end)
 		if isnubmer then return false
-		else return true
+		else return true end
 	end
 	if isnotnumber(xpos) then 
 		xposoff = xpos.Offset
