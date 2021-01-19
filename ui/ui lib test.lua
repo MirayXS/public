@@ -1,4 +1,4 @@
-local wersja = "3.17.14"
+local wersja = "3.17.15"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -344,7 +344,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			titileboxframe.Parent = topper.Parent
 			titileboxframe.Position = UDim2.new(xpos, xposoff, ypos, yposoff)
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
-			titileboxframe.Name = "titleboxframe Frame"
+			titileboxframe.Name = "titileboxframe Frame"
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			titileboxframe.BackgroundTransparency = 1
 			titileboxframe.BorderColor3 = Color3.new(bordcol)
@@ -353,7 +353,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 
 			local boxframe = Instance.new("Frame")
 			boxframe.Parent = titileboxframe
-			boxframe.Position = titleboxframe.Position + UDim2.new(0,0,0,-20)
+			boxframe.Position = titileboxframe.Position + UDim2.new(0,0,0,-20)
 			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
 			boxframe.Name = "textboxframe"
 			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
