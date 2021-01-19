@@ -50,7 +50,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		end
 	end
 
-	if	isnotnumber(ypos) then 
+	if isnotnumber(ypos) then 
 		yposoff = ypos.Offset
 		ypos = ypos.Scale
 	else
