@@ -323,6 +323,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	function CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
 		sizex = sizex or 200
 		sizey = sizey or 100
+		transp = transp or 0
 		local xposoff = 0
 		local yposoff = 0
 		x = x or 200
@@ -351,6 +352,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		boxframe.Name = "textboxframe"
 		boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		boxframe.BackgroundTransparency = 1
+		boxframe.BorderColor3 = Color3.new(bordcol)
 
 		local titlebox = Instance.new("TextBox")
 		titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -360,7 +362,8 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		titlebox.Position=boxframe.Position + UDim2(0,0,0,-20)
 		titlebox.BackgroundTransparency = transp
 		titlebox.Text = name or "nodata"
-		
+		titlebox.BorderColor3 = Color3.new(bordcol)
+
 		addDrag(titlebox)
 
 		local textbox = Instance.new("TextBox")
@@ -370,6 +373,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 		textbox.Position = UDim2.new(0,0,0,0)
 		textbox.Size =  UDim2.new(0, sizex, 0, sizey)
 		textbox.BackgroundTransparency = transp
+		textbox.BorderColor3 = Color3.new(bordcol)
 
 	end
 	--print("done")
