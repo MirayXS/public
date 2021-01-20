@@ -1,4 +1,4 @@
-local wersja = "3.17.23"
+local wersja = "3.17.28"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -24,48 +24,8 @@ function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()loca
 local library = {}
 bordcol={120, 120,120}
 
-function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
-	function convertpos(xpos, ypos) -- pass number or UDim returns 2 UDim
-		xpos = xpos or 400
-		ypos = ypos or 200
-		local xposoff = 0
-		local yposoff = 0
-		local function isnotnumber(valuetocheck)
-			local isnubmer = pcall(function ()
-				if valuetocheck - 1 then
-					return true
-				end
-			end)
-			if isnubmer then return false
-			else return true end
-		end
-		if isnotnumber(xpos) then 
-			xposoff = xpos.Offset
-			xpos = xpos.Scale
-		else
-			if xpos ~= nil and xpos > 5 then -- pozycja x
-				xposoff = xpos
-				xpos = 0
-			else
-				xpos = xpos or 0.5
-			end
-		end
+function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 	
-		if isnotnumber(ypos) then 
-			yposoff = ypos.Offset
-			ypos = ypos.Scale
-		else
-			if ypos ~= nil and ypos > 5 then -- pozycja y
-				yposoff = ypos
-				ypos = 0
-			else
-				ypos = ypos or 0.15
-			end
-		end
-		local finalcov = UDim2.new(xpos, xposoff, ypos, yposoff)
-		return finalcov
-	end
-
 	x = x or 200 --wymiary
 	y = y or 0 -- wymiary
 
@@ -87,7 +47,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	topper.Name = "topper"
 	topper.Parent = ScreenGui
 	topper.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	topper.Position = convertpos(xpos, ypos)
+	topper.Position = winPosition
 	topper.Size = UDim2.new(0, x, 0, 20)
 	topper.BorderColor3 = Color3.new(bordcol)
 	topper.Transparency = 0.1
@@ -95,7 +55,7 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 	body.Name = "body"
 	body.Parent = topper
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	body.Position = UDim2.new(0, 0 ,0 ,21)
+	body.Position = UDim2.new(0,0,0,20)
 	body.Size = UDim2.new(0, x, 0, y)
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -340,33 +300,19 @@ function library:CreateWindow(nazwa, xpos, ypos) -- nazwa rozmiar pozycja
 			end
 			callb()
 		end
-		function library:CreateTextbox(name, gettextfunc, sizex, sizey, xpos, ypos, transp)
+		function library:CreateTextbox(name, gettextfunc, textpos, sizex, sizey, transp)
 			xpos = xpos or 0.4
 			ypos = ypos or 0.8
 			sizex = sizex or 200
-			sizey = sizey or 100
+			sizey = sizey or 300
 			transp = transp or 0
 			local xposoff = 0
 			local yposoff = 0
-			x = x or 200
-			y = y or 0
-			if xpos ~= nil and xpos > 5 then -- pozycja x
-					xposoff = xpos
-					xpos = 0
-			else
-				xpos = xpos or 0.3
-			end
+			textpos = textpos or UDim2.new(0,0,0,0)
 
-			if ypos ~= nil and ypos > 5 then -- pozycja y
-					yposoff = ypos
-					ypos = 0
-			else
-				xpos = xpos or 0.15
-			end
-			
 			local titileboxframe = Instance.new("Frame")
 			titileboxframe.Parent = topper.Parent
-			titileboxframe.Position = convertpos(xpos, ypos)
+			titileboxframe.Position = textpos
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
 			titileboxframe.Name = "titileboxframe Frame"
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)

@@ -55,7 +55,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 	body.Name = "body"
 	body.Parent = topper
 	body.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-	body.Position = UDim2.new(0,0,0,-20)
+	body.Position = UDim2.new(0,0,0,20)
 	body.Size = UDim2.new(0, x, 0, y)
 	UIListLayout.Parent = body
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
