@@ -1,7 +1,9 @@
-local wersja = "3.17.28"
+local wersja = "3.17.29"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
+library:CreateWindow(nazwa, winPosition)  -- string UDIm2
+
  library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną
 	_G.test1 = state
     while _G.test1 == true and wait(1) do
@@ -9,13 +11,19 @@ print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
     end
  end)
 
- library:CreateButton("Gay", function()  -- A1 button text
- 	print("yes") -- what to do on click
+ library:CreateButton("Gay", function()  -- string function
+	 	print("yes") -- what to do on click
  end)
 
- library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
+ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)  -- string, list, function that fires on change of button
     print("yes ", selection)
 end,"default :)")
+
+function library:CreateTextbox(name, function() --string, function
+	
+end, textpos, sizex, sizey, transp) --, poisiton UDim2, sizex number, sizey number, transparency number
+
+
 
 --]]
 
@@ -87,7 +95,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 	deleter.Visible = false
 
 	deleter.MouseButton1Click:Connect(function()
-		ScreenGui:Destroy()
+		topper:Destroy()
 	end)
 
 	hider.Name = "hider"
@@ -353,6 +361,60 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			textbox.TextXAlignment = Enum.TextXAlignment.Left
 			textbox.TextYAlignment = Enum.TextYAlignment.Top
 
+			local textboxdeleter = Instance.new("TextButton")
+			textboxdeleter.Name = "deleter" -- deleter
+			textboxdeleter.Parent = titileboxframe
+			textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+			textboxdeleter.Position = UDim2.new(0, x-40, 0, 0)
+			textboxdeleter.Size = UDim2.new(0, 20, 0, 20)
+			textboxdeleter.Font = Enum.Font.Highway
+			textboxdeleter.Text = "X"
+			textboxdeleter.TextColor3 = Color3.fromRGB(255, 255, 255)
+			textboxdeleter.TextSize = 14.000
+			textboxdeleter.BorderColor3 = Color3.new(bordcol)
+			textboxdeleter.BackgroundTransparency = 0.1
+			textboxdeleter.Visible = false
+
+			textboxdeleter.MouseButton1Click:Connect(function()
+				titileboxframe:Destroy()
+			end)
+
+			local textboxhider = Instance.new("TextButton")
+			textboxhider.Name = "textboxhider"
+			textboxhider.Parent = titileboxframe
+			textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+			textboxhider.Position = UDim2.new(0, x-20, 0, 0)
+			textboxhider.Rotation = 90
+			textboxhider.Size = UDim2.new(0, 20, 0, 20)
+			textboxhider.Font = Enum.Font.Highway
+			textboxhider.Text = ">"
+			textboxhider.TextColor3 = Color3.fromRGB(255, 255, 255)
+			textboxhider.TextSize = 14.000
+			textboxhider.BorderColor3 = Color3.new(bordcol)
+			textboxhider.BackgroundTransparency = 0.1
+			toggled = true
+			
+			textboxhider.MouseButton1Up:Connect(function()
+				if toggled == true then
+					toggled = false
+					textbox.ClipsDescendants = true
+					textbox:TweenSize(UDim2.new(0, sizex,0, 0), "In", "Linear", 0.2)
+					hider.Rotation = 270
+					wait(2)
+					if toggled == false then
+						textboxdeleter.Visible = true
+					end
+				else
+					toggled = true
+					textboxdeleter.Visible = false
+					local function nclip()
+						body.ClipsDescendants = false
+					end
+					body:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2, false, nclip)
+					hider.Rotation = 90
+				end
+			end)
+		
 			while wait() do
 				local succes, result = pcall(gettextfunc)
 				if succes then
