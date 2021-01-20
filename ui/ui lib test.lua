@@ -420,6 +420,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 
 			local function textupdaterfunction(textboxtext)
 				while wait(1) do
+					print(pcall(textboxtext))
 					local textwillbe = pcall(textboxtext)
 					textbox.Text = textwillbe
 				end
