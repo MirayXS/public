@@ -1,4 +1,4 @@
-local wersja = "3.17.34"
+local wersja = "3.17.35"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -87,6 +87,8 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 	deleter.Position = UDim2.new(0, x-41, 0, 0)
 	deleter.Size = UDim2.new(0, 20, 0, 20)
 	deleter.Font = Enum.Font.Highway
+	deleter.TextXAlignment = Enum.TextXAlignment.Center
+	deleter.TextYAlignment = Enum.TextYAlignment.Center
 	deleter.Text = "X"
 	deleter.TextColor3 = Color3.fromRGB(255, 255, 255)
 	deleter.TextSize = 14.000
