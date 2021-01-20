@@ -1,4 +1,4 @@
-local wersja = "3.17.30"
+local wersja = "3.17.31"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
