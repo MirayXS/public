@@ -490,7 +490,11 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
             while wait(1) do
                 local succes, textwillbe = pcall(textboxtext)
                 if succes then
+                    if pcall(function(textwillbe)
+                        test = textwillbe..""
+                    end)then
                     textbox.Text = textwillbe
+                    end
                 else
                     print(succes, textwillbe)
                 end
