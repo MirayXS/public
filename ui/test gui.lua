@@ -23,12 +23,13 @@ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "opt
     print("yes ", selection)
 end,"default :)")
 
+spawn(function()
+    library:CreateTextbox("testtexbox", function()
+    return "stringofdata"
+    end,UDim2.new(0,200,0,0))
+end)
 
-library:CreateTextbox("testtexbox", function()
-    wait(2)
-    return "WORKS!!!"
-end,UDim2.new(0,300,0,0))
-
-
-
+library:CreateTextbox("testtexbox2", function()
+    return "stringofdata2"
+    end,UDim2.new(0,410,0,0))
 
