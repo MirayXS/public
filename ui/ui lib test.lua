@@ -1,4 +1,4 @@
-local wersja = "3.17.39"
+local wersja = "3.17.40"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -416,10 +416,19 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					textboxhider.Rotation = 90
 				end
 			end)
-		
-			while wait() do
-				if gettextfunc:IsA("string") then
+
+			local function issting(gettextfunc)
+				local issting = pcall(function()
+					gettextfunc = gettextfunc..""
+					return true
+				end, gettextfunc)
+				return issting
+			end
+
+			while wait(gettextfunc) do
+				if isstring() then
 					textbox.Text = gettextfunc
+					wait(5)
 				else
 					local succes, result = pcall(gettextfunc)
 					if succes then
