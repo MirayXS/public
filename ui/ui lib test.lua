@@ -1,4 +1,4 @@
-local wersja = "3.17.37"
+local wersja = "3.17.38"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -324,7 +324,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			titileboxframe.Parent = topper.Parent
 			titileboxframe.Position = textpos
 			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
-			titileboxframe.Name = "titileboxframe Frame"
+			titileboxframe.Name = "titileboxframe Frame"..name
 			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			titileboxframe.BackgroundTransparency = 1
 			titileboxframe.BorderColor3 = Color3.new(bordcol)
@@ -335,7 +335,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			boxframe.Parent = titileboxframe
 			boxframe.Position = UDim2.new(0,0,0,21)
 			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
-			boxframe.Name = "textboxframe"
+			boxframe.Name = "textboxframe"..name
 			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			boxframe.BackgroundTransparency = 1
 			boxframe.BorderColor3 = Color3.new(bordcol)
@@ -345,7 +345,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			titlebox.Size = UDim2.new(0, sizex, 0, 20)
 			titlebox.Parent = titileboxframe
-			titlebox.Name = "titlebox"
+			titlebox.Name = "titlebox"..name
 			titlebox.Position= UDim2.new(0,0,0,0)
 			titlebox.BackgroundTransparency = transp
 			titlebox.Text = name or "nodata"
@@ -353,7 +353,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 
 			local textbox = Instance.new("TextLabel")
 			textbox.Parent = boxframe
-			textbox.Name = "databox"
+			textbox.Name = "databox"..name
 			textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
 			textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 			textbox.Position = UDim2.new(0,0,0,0)
@@ -364,7 +364,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			textbox.TextYAlignment = Enum.TextYAlignment.Top
 
 			local textboxdeleter = Instance.new("TextButton")
-			textboxdeleter.Name = "deleter" -- deleter
+			textboxdeleter.Name = "deleter"..name -- deleter
 			textboxdeleter.Parent = titileboxframe
 			textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
 			textboxdeleter.Position = UDim2.new(0, x-41, 0, 0)
@@ -382,7 +382,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			end)
 
 			local textboxhider = Instance.new("TextButton")
-			textboxhider.Name = "textboxhider"
+			textboxhider.Name = "textboxhider"..name
 			textboxhider.Parent = titileboxframe
 			textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
 			textboxhider.Position = UDim2.new(0, x-20, 0, 0)
