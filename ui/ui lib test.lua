@@ -1,4 +1,4 @@
-local wersja = "3.17.46"
+local wersja = "3.17.48"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -417,18 +417,11 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					textboxhider.Rotation = 90
 				end
 			end)
-		
-			local function textboxupdaterfunction()
-				while true do
-				textbox.Text = textboxtext
-				wait(0.5)
-				end
-			end
-			spawn(textboxupdaterfunction(textboxtext))
-			
+
+			textbox.Text = textboxtext
+
 		end
 		
-
 		--print("done")
 	return nooblib
 end
