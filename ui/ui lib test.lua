@@ -1,4 +1,4 @@
-local wersja = "3.17.36"
+local wersja = "3.17.37"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -106,7 +106,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 	hider.Position = UDim2.new(0, x-20, 0, 0)
 	hider.Rotation = 90
 	hider.Size = UDim2.new(0, 20, 0, 20)
-	hider.Font = Enum.Font.Highway
+	hider.Font = Enum.Font.ArialBold
 	hider.Text = ">"
 	hider.TextColor3 = Color3.fromRGB(255, 255, 255)
 	hider.TextSize = 14.000
@@ -369,7 +369,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
 			textboxdeleter.Position = UDim2.new(0, x-41, 0, 0)
 			textboxdeleter.Size = UDim2.new(0, 20, 0, 20)
-			textboxdeleter.Font = Enum.Font.Highway
+			textboxdeleter.Font = Enum.Font.ArialBold
 			textboxdeleter.Text = "x"
 			textboxdeleter.TextColor3 = Color3.fromRGB(255, 255, 255)
 			textboxdeleter.TextSize = 14.000
