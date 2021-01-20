@@ -1,4 +1,4 @@
-local wersja = "3.17.42"
+local wersja = "3.17.43"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -424,20 +424,23 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 				end, gettextfunc)
 				return issting
 			end
-
-			while wait() do
-				if issting(gettextfunc) then
-					textbox.Text = gettextfunc
-					wait(5)
-				else
-					local succes, result = pcall(gettextfunc)
-					if succes then
-						textbox.Text = result
+			
+			local function textboxupdaterfunction()
+				while wait() do
+					if issting(gettextfunc) then
+						textbox.Text = gettextfunc
+						wait(60)
 					else
-						print("DATA FUNCTION ERROR!")
+						local succes, result = pcall(gettextfunc)
+						if succes then
+							textbox.Text = result
+						else
+							print("DATA FUNCTION ERROR!")
+						end
 					end
 				end
 			end
+			spawn(textboxupdaterfunction())
 
 
 		end
