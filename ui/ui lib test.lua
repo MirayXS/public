@@ -1,4 +1,4 @@
-local wersja = "3.17.27"
+local wersja = "3.17.28"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -300,7 +300,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			end
 			callb()
 		end
-		function library:CreateTextbox(name, gettextfunc, sizex, sizey, textpos, transp)
+		function library:CreateTextbox(name, gettextfunc, textpos, sizex, sizey, transp)
 			xpos = xpos or 0.4
 			ypos = ypos or 0.8
 			sizex = sizex or 200
