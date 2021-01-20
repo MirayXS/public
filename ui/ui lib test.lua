@@ -1,4 +1,4 @@
-local wersja = "3.17.54"
+local wersja = "3.17.55"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -309,123 +309,126 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 		end
 
 		function library:CreateTextbox(name, textboxtext, textpos, sizex, sizey, transp)
-			xpos = xpos or 0.4
-			ypos = ypos or 0.8
-			sizex = sizex or 200
-			sizey = sizey or 300
-			transp = transp or 0
-			local xposoff = 0
-			local yposoff = 0
-			textpos = textpos or UDim2.new(0,0,0,0)
-		
-			local titileboxframe = Instance.new("Frame")
-			titileboxframe.Parent = topper.Parent
-			titileboxframe.Position = textpos
-			titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
-			titileboxframe.Name = "titileboxframe Frame"..name
-			titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			titileboxframe.BackgroundTransparency = 1
-			titileboxframe.BorderColor3 = Color3.new(bordcol)
-			local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
-			addDrag(titileboxframe)
-		
-			local boxframe = Instance.new("Frame")
-			boxframe.Parent = titileboxframe
-			boxframe.Position = UDim2.new(0,0,0,21)
-			boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
-			boxframe.Name = "textboxframe"..name
-			boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			boxframe.BackgroundTransparency = 1
-			boxframe.BorderColor3 = Color3.new(bordcol)
-		
-			local titlebox = Instance.new("TextLabel")
-			titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
-			titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-			titlebox.Size = UDim2.new(0, sizex, 0, 20)
-			titlebox.Parent = titileboxframe
-			titlebox.Name = "titlebox"..name
-			titlebox.Position= UDim2.new(0,0,0,0)
-			titlebox.BackgroundTransparency = transp
-			titlebox.Text = name or "nodata"
-			titlebox.BorderColor3 = Color3.new(bordcol)
-		
-			local textbox = Instance.new("TextLabel")
-			textbox.Parent = boxframe
-			textbox.Name = "databox"..name
-			textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
-			textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-			textbox.Position = UDim2.new(0,0,0,0)
-			textbox.Size =  UDim2.new(0, sizex, 0, sizey)
-			textbox.BackgroundTransparency = transp
-			textbox.BorderColor3 = Color3.new(bordcol)
-			textbox.TextXAlignment = Enum.TextXAlignment.Left
-			textbox.TextYAlignment = Enum.TextYAlignment.Top
-		
-			local textboxdeleter = Instance.new("TextButton")
-			textboxdeleter.Name = "deleter"..name -- deleter
-			textboxdeleter.Parent = titileboxframe
-			textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
-			textboxdeleter.Position = UDim2.new(0, x-41, 0, 0)
-			textboxdeleter.Size = UDim2.new(0, 20, 0, 20)
-			textboxdeleter.Font = Enum.Font.ArialBold
-			textboxdeleter.Text = "x"
-			textboxdeleter.TextColor3 = Color3.fromRGB(255, 255, 255)
-			textboxdeleter.TextSize = 14.000
-			textboxdeleter.BorderColor3 = Color3.new(bordcol)
-			textboxdeleter.BackgroundTransparency = 0.1
-			textboxdeleter.Visible = false
-		
-			textboxdeleter.MouseButton1Click:Connect(function()
-				titileboxframe:Destroy()
-			end)
-		
-			local textboxhider = Instance.new("TextButton")
-			textboxhider.Name = "textboxhider"..name
-			textboxhider.Parent = titileboxframe
-			textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-			textboxhider.Position = UDim2.new(0, x-20, 0, 0)
-			textboxhider.Rotation = 90
-			textboxhider.Size = UDim2.new(0, 20, 0, 20)
-			textboxhider.Font = Enum.Font.Highway
-			textboxhider.Text = ">"
-			textboxhider.TextColor3 = Color3.fromRGB(255, 255, 255)
-			textboxhider.TextSize = 14.000
-			textboxhider.BorderColor3 = Color3.new(bordcol)
-			textboxhider.BackgroundTransparency = 0.1
-			local toggled = true
+			local function createtextboxfundtion(name, textboxtext, textpos, sizex, sizey, transp)
+				xpos = xpos or 0.4
+				ypos = ypos or 0.8
+				sizex = sizex or 200
+				sizey = sizey or 300
+				transp = transp or 0
+				local xposoff = 0
+				local yposoff = 0
+				textpos = textpos or UDim2.new(0,0,0,0)
 			
-			textboxhider.MouseButton1Up:Connect(function()
-				if toggled == true then
-					toggled = false
-					textbox.ClipsDescendants = true
-					textbox:TweenSize(UDim2.new(0, sizex,0, 0), "In", "Linear", 0.2)
-					textboxhider.Rotation = 270
-					wait(2)
-					if toggled == false then
-						textboxdeleter.Visible = true
+				local titileboxframe = Instance.new("Frame")
+				titileboxframe.Parent = topper.Parent
+				titileboxframe.Position = textpos
+				titileboxframe.Size = UDim2.new(0, sizex, 0 , 20)
+				titileboxframe.Name = "titileboxframe Frame"..name
+				titileboxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				titileboxframe.BackgroundTransparency = 1
+				titileboxframe.BorderColor3 = Color3.new(bordcol)
+				local function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
+				addDrag(titileboxframe)
+			
+				local boxframe = Instance.new("Frame")
+				boxframe.Parent = titileboxframe
+				boxframe.Position = UDim2.new(0,0,0,21)
+				boxframe.Size = UDim2.new(0, sizex, 0 , sizey)
+				boxframe.Name = "textboxframe"..name
+				boxframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				boxframe.BackgroundTransparency = 1
+				boxframe.BorderColor3 = Color3.new(bordcol)
+			
+				local titlebox = Instance.new("TextLabel")
+				titlebox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				titlebox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				titlebox.Size = UDim2.new(0, sizex, 0, 20)
+				titlebox.Parent = titileboxframe
+				titlebox.Name = "titlebox"..name
+				titlebox.Position= UDim2.new(0,0,0,0)
+				titlebox.BackgroundTransparency = transp
+				titlebox.Text = name or "nodata"
+				titlebox.BorderColor3 = Color3.new(bordcol)
+			
+				local textbox = Instance.new("TextLabel")
+				textbox.Parent = boxframe
+				textbox.Name = "databox"..name
+				textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				textbox.Position = UDim2.new(0,0,0,0)
+				textbox.Size =  UDim2.new(0, sizex, 0, sizey)
+				textbox.BackgroundTransparency = transp
+				textbox.BorderColor3 = Color3.new(bordcol)
+				textbox.TextXAlignment = Enum.TextXAlignment.Left
+				textbox.TextYAlignment = Enum.TextYAlignment.Top
+			
+				local textboxdeleter = Instance.new("TextButton")
+				textboxdeleter.Name = "deleter"..name -- deleter
+				textboxdeleter.Parent = titileboxframe
+				textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+				textboxdeleter.Position = UDim2.new(0, x-41, 0, 0)
+				textboxdeleter.Size = UDim2.new(0, 20, 0, 20)
+				textboxdeleter.Font = Enum.Font.ArialBold
+				textboxdeleter.Text = "x"
+				textboxdeleter.TextColor3 = Color3.fromRGB(255, 255, 255)
+				textboxdeleter.TextSize = 14.000
+				textboxdeleter.BorderColor3 = Color3.new(bordcol)
+				textboxdeleter.BackgroundTransparency = 0.1
+				textboxdeleter.Visible = false
+			
+				textboxdeleter.MouseButton1Click:Connect(function()
+					titileboxframe:Destroy()
+				end)
+			
+				local textboxhider = Instance.new("TextButton")
+				textboxhider.Name = "textboxhider"..name
+				textboxhider.Parent = titileboxframe
+				textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+				textboxhider.Position = UDim2.new(0, x-20, 0, 0)
+				textboxhider.Rotation = 90
+				textboxhider.Size = UDim2.new(0, 20, 0, 20)
+				textboxhider.Font = Enum.Font.Highway
+				textboxhider.Text = ">"
+				textboxhider.TextColor3 = Color3.fromRGB(255, 255, 255)
+				textboxhider.TextSize = 14.000
+				textboxhider.BorderColor3 = Color3.new(bordcol)
+				textboxhider.BackgroundTransparency = 0.1
+				local toggled = true
+				
+				textboxhider.MouseButton1Up:Connect(function()
+					if toggled == true then
+						toggled = false
+						textbox.ClipsDescendants = true
+						textbox:TweenSize(UDim2.new(0, sizex,0, 0), "In", "Linear", 0.2)
+						textboxhider.Rotation = 270
+						wait(2)
+						if toggled == false then
+							textboxdeleter.Visible = true
+						end
+					else
+						toggled = true
+						textboxdeleter.Visible = false
+						local function nclip()
+							titileboxframe.ClipsDescendants = false
+						end
+						textbox:TweenSize(UDim2.new(0, sizex,0, sizey), "Out", "Linear", 0.2, false, nclip)
+						textboxhider.Rotation = 90
 					end
-				else
-					toggled = true
-					textboxdeleter.Visible = false
-					local function nclip()
-						titileboxframe.ClipsDescendants = false
-					end
-					textbox:TweenSize(UDim2.new(0, sizex,0, sizey), "Out", "Linear", 0.2, false, nclip)
-					textboxhider.Rotation = 90
-				end
-			end)
+				end)
 
-			local function textupdaterfunction(textboxtext)
-				while wait(1) do
-					local succes, textwillbe = pcall(textboxtext)
-					if succes then
-						textbox.Text = textwillbe
-					else 
-						print(succes, textwillbe)
+				local function textupdaterfunction(textboxtext)
+					while wait(1) do
+						local succes, textwillbe = pcall(textboxtext)
+						if succes then
+							textbox.Text = textwillbe
+						else 
+							print(succes, textwillbe)
+						end
 					end
 				end
+				spawn(textupdaterfunction(textboxtext))
 			end
-			spawn(textupdaterfunction(textboxtext))
+			spawn(createtextboxfundtion())
 		end
 		
 		--print("done")
