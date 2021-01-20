@@ -1,4 +1,4 @@
-local wersja = "3.17.32"
+local wersja = "3.17.33"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -399,7 +399,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					toggled = false
 					textbox.ClipsDescendants = true
 					textbox:TweenSize(UDim2.new(0, sizex,0, 0), "In", "Linear", 0.2)
-					hider.Rotation = 270
+					textboxhider.Rotation = 270
 					wait(2)
 					if toggled == false then
 						textboxdeleter.Visible = true
