@@ -1,5 +1,5 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafal11ck/public/main/ui/ui%20lib%20test.lua"))() 
-local Main = library:CreateWindow("Gui Name" , UDim2.new(0,200,0,200))  -- tworzy glowne okno gui
+local Main = library:CreateWindow("Gui Name" , UDim2.new(0,0,0,0))  -- tworzy glowne okno gui
 
 library:CreateToggle("testtog1", function(state) 
 	_G.test1 = state
@@ -20,16 +20,17 @@ library:CreateButton("Gay", function()
     end)
 
 library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
-    print("yes ", selection)
+    print(selection)
 end,"default :)")
 
+--
 spawn(function()
     library:CreateTextbox("testtexbox", function()
     return "stringofdata"
-    end,UDim2.new(0,200,0,0))
+    end,UDim2.new(0,210,0,-35))
 end)
 
 library:CreateTextbox("testtexbox2", function()
     return "stringofdata2"
-    end,UDim2.new(0,410,0,0))
+    end,UDim2.new(0,420,0,-35))
 

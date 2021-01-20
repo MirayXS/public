@@ -2,26 +2,44 @@ local wersja = "3.17.57"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
-library:CreateWindow(nazwa, winPosition)  -- string UDIm2
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafal11ck/public/main/ui/ui%20lib%20test.lua"))() 
+local Main = library:CreateWindow("Gui Name" , UDim2.new(0,0,0,0))  -- tworzy glowne okno gui
 
- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną
+library:CreateToggle("testtog1", function(state) 
 	_G.test1 = state
     while _G.test1 == true and wait(1) do
-		print("test1", _G.test1) 		-- co robic
+		print("test1", _G.test1)
     end
- end)
+end)
 
- library:CreateButton("Gay", function()  -- string function
-	 	print("yes") -- what to do on click
- end)
+library:CreateToggle("testtog2", function(state)
+	_G.test2 = state
+    while _G.test2 == true and wait(1) do
+		print("test2", _G.test2)
+    end
+end)
 
- library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)  -- string, list, function that fires on change of button
-    print("yes ", selection)
+library:CreateButton("Gay", function()
+    print("yes")
+    end)
+
+library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
+    print(selection)
 end,"default :)")
 
-function library:CreateTextbox(name, function() --string, function(return string)
-	
-end, textpos, sizex, sizey, transp) --, poisiton UDim2, sizex number, sizey number, transparency number
+--
+spawn(function()
+    library:CreateTextbox("testtexbox", function()
+    return "stringofdata"
+    end,UDim2.new(0,210,0,-35))
+end)
+
+spawn(function()
+library:CreateTextbox("testtexbox2", function()
+    return "stringofdata2"
+    end,UDim2.new(0,420,0,-35))
+end)
+
 --]]
 
 function addDrag(a)
