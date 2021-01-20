@@ -410,7 +410,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					local function nclip()
 						titileboxframe.ClipsDescendants = false
 					end
-					titileboxframe:TweenSize(UDim2.new(0, x,0, y), "Out", "Linear", 0.2, false, nclip)
+					titileboxframe:TweenSize(UDim2.new(0, sizex,0, sizey), "Out", "Linear", 0.2, false, nclip)
 					textboxhider.Rotation = 90
 				end
 			end)
