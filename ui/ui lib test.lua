@@ -1,4 +1,4 @@
-local wersja = "3.17.40"
+local wersja = "3.17.41"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -425,8 +425,8 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 				return issting
 			end
 
-			while wait(gettextfunc) do
-				if isstring() then
+			while wait() do
+				if isstring(gettextfunc) then
 					textbox.Text = gettextfunc
 					wait(5)
 				else
