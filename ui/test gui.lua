@@ -23,8 +23,9 @@ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "opt
     print("yes ", selection)
 end,"default :)")
 
-
-library:CreateTextbox("testtexbox", function()
-    return "stringofdata"
-    end,UDim2.new(0,0,0,0))
-
+_G.testtex1 ="testtext1"
+library:CreateTextbox("testtexbox", _G.testtex1 ,UDim2.new(0,0,0,300))
+library:CreateTextbox("testtexbox2", _G.testtex2 ,UDim2.new(0,0,0,500))
+wait(2)
+_G.testtex1 ="testtext1 CHANGED!"
+_G.testtex2 ="_G.testtex2 ALSO CHANGED1"
