@@ -1,4 +1,4 @@
-local wersja = "3.17.52"
+local wersja = "3.17.53"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -22,9 +22,6 @@ end,"default :)")
 function library:CreateTextbox(name, function() --string, function(return string)
 	
 end, textpos, sizex, sizey, transp) --, poisiton UDim2, sizex number, sizey number, transparency number
-
-
-
 --]]
 
 function addDrag(a)local b=game:GetService("Players").LocalPlayer:GetMouse()local c=game:GetService('UserInputService')local d=game:GetService("RunService").Heartbeat;local e,f=pcall(function()return a.MouseEnter end)if e then a.Active=true;f:connect(function()local g=a.InputBegan:connect(function(h)if h.UserInputType==Enum.UserInputType.MouseButton1 then local i=Vector2.new(b.X-a.AbsolutePosition.X,b.Y-a.AbsolutePosition.Y)while d:wait()and c:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)do pcall(function()a:TweenPosition(UDim2.new(0,b.X-i.X,0,b.Y-i.Y),'Out','Linear',0.1,true)end)end end end)local j;j=a.MouseLeave:connect(function()g:disconnect()j:disconnect()end)end)end end
@@ -422,7 +419,11 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 				while wait(1) do
 					print(pcall(textboxtext))
 					local succes, textwillbe = pcall(textboxtext)
-					textbox.Text = textwillbe
+					if succes then
+						textbox.Text = textwillbe
+					else 
+						print(succes, textwillbe)
+					end
 				end
 			end
 			spawn(textupdaterfunction(textboxtext))
