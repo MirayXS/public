@@ -19,7 +19,7 @@ library:CreateWindow(nazwa, winPosition)  -- string UDIm2
     print("yes ", selection)
 end,"default :)")
 
-function library:CreateTextbox(name, function() --string, function
+function library:CreateTextbox(name, function() --string, function(return string)
 	
 end, textpos, sizex, sizey, transp) --, poisiton UDim2, sizex number, sizey number, transparency number
 
