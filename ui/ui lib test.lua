@@ -1,4 +1,4 @@
-local wersja = "3.17.31"
+local wersja = "3.17.32"
 print("UI "..wersja.."   by ciabar9ck#8155")  -- se printuje wersje
 
 --[[
@@ -410,7 +410,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					local function nclip()
 						titileboxframe.ClipsDescendants = false
 					end
-					titileboxframe:TweenSize(UDim2.new(0, sizex,0, sizey), "Out", "Linear", 0.2, false, nclip)
+					textbox:TweenSize(UDim2.new(0, sizex,0, sizey), "Out", "Linear", 0.2, false, nclip)
 					textboxhider.Rotation = 90
 				end
 			end)
