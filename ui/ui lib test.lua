@@ -304,7 +304,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 			xpos = xpos or 0.4
 			ypos = ypos or 0.8
 			sizex = sizex or 200
-			sizey = sizey or 100
+			sizey = sizey or 300
 			transp = transp or 0
 			local xposoff = 0
 			local yposoff = 0
