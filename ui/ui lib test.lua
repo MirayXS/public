@@ -27,17 +27,10 @@ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "opt
     print(selection)
 end,"default :)")
 
---
 spawn(function()
     library:CreateTextbox("testtexbox", function()
     return "stringofdata"
     end,UDim2.new(0,210,0,-35))
-end)
-
-spawn(function()
-library:CreateTextbox("testtexbox2", function()
-    return "stringofdata2"
-    end,UDim2.new(0,420,0,-35))
 end)
 
 --]]
