@@ -1,4 +1,4 @@
-local wersja = "3.17.70"
+local wersja = "3.17.71"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -422,6 +422,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         if toggled == true then
             textbox.Size = UDim2.new(0, sizex, 0, sizey)
         else
+            textbox.ClipsDescendants = true
             textbox.Size = UDim2.new(0, sizex, 0, 0)
         end
         textbox.BackgroundTransparency = transp
@@ -453,7 +454,11 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.Parent = titileboxframe
         textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
         textboxhider.Position = UDim2.new(0, sizex - 20, 0, 0)
-        textboxhider.Rotation = 90
+        if toggled == true then 
+            textboxhider.Rotation = 90
+        else
+            textboxhider.Rotation = 270
+        end
         textboxhider.Size = UDim2.new(0, 20, 0, 20)
         textboxhider.Font = Enum.Font.Highway
         textboxhider.Text = ">"
