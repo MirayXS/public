@@ -1,4 +1,4 @@
-local wersja = "3.17.68"
+local wersja = "3.17.69"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -360,6 +360,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         sizey = sizey or 300
         transp = transp or 0
         textpos = textpos or UDim2.new(0, 0, 0, 0)
+        toggled = toggled or true
 
         local titileboxframe = Instance.new("Frame")
         titileboxframe.Parent = topper.Parent
@@ -425,7 +426,11 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
         textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
         textbox.Position = UDim2.new(0, 0, 0, 0)
-        textbox.Size = UDim2.new(0, sizex, 0, sizey)
+        if toggled then
+            textbox.Size = UDim2.new(0, sizex, 0, sizey)
+        else
+            textbox.Size = UDim2.new(0, sizex, 0, 0)
+        end
         textbox.BackgroundTransparency = transp
         textbox.BorderColor3 = Color3.new(bordcol)
         textbox.TextXAlignment = Enum.TextXAlignment.Left
@@ -483,12 +488,6 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 textbox:TweenSize(UDim2.new(0, sizex, 0, sizey), "Out", "Linear", 0.2, false, nclip)
                 textboxhider.Rotation = 90
             end
-        end
-        toggled = toggled or true
-
-        if toggled == false then
-            chagngestate(true)
-            wait()
         end
 
         textboxhider.MouseButton1Up:Connect(function()
