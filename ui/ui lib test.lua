@@ -27,10 +27,11 @@ library:Createswitch("switch", {"option1", "option2", "option3", "option4", "opt
     print(selection)
 end,"default :)")
 
+-- name, function that returns string, size in UDim2, sizex, sizey, transparency, default state(minmalizeed/opened)
 spawn(function()
     library:CreateTextbox("testtexbox", function()
     return "stringofdata"
-    end,UDim2.new(0,210,0,-35))
+    end,UDim2.new(0,520,0,-35),150,200,nil,false)
 end)
 
 --]]

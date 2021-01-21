@@ -1,27 +1,39 @@
-local wersja = "3.17.57"
+local wersja = "3.17.74"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
-library:CreateWindow(nazwa, winPosition)  -- string UDIm2
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafal11ck/public/main/ui/ui%20lib%20test.lua"))() 
+local Main = library:CreateWindow("Gui Name" , UDim2.new(0,0,0,0))  -- tworzy glowne okno gui
 
- library:CreateToggle("testtog1", function(state)   -- nazwa zmienic _G.  zmienną
+library:CreateToggle("testtog1", function(state) 
 	_G.test1 = state
     while _G.test1 == true and wait(1) do
-		print("test1", _G.test1) 		-- co robic
+		print("test1", _G.test1)
     end
- end)
+end)
 
- library:CreateButton("Gay", function()  -- string function
-	 	print("yes") -- what to do on click
- end)
+library:CreateToggle("testtog2", function(state)
+	_G.test2 = state
+    while _G.test2 == true and wait(1) do
+		print("test2", _G.test2)
+    end
+end)
 
- library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)  -- string, list, function that fires on change of button
-    print("yes ", selection)
+library:CreateButton("Gay", function()
+    print("yes")
+    end)
+
+library:Createswitch("switch", {"option1", "option2", "option3", "option4", "option5"}, function(selection)
+    print(selection)
 end,"default :)")
 
-function library:CreateTextbox(name, function() --string, function(return string)
-	
-end, textpos, sizex, sizey, transp) --, poisiton UDim2, sizex number, sizey number, transparency number
+-- name, function that returns string, size in UDim2, sizex, sizey, transparency, default state(minmalizeed/opened)
+spawn(function()
+    library:CreateTextbox("testtexbox", function()
+    return "stringofdata"
+    end,UDim2.new(0,520,0,-35),150,200,nil,false)
+end)
+
 --]]
 
 function addDrag(a)
@@ -337,11 +349,14 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         callb()
     end
 
-    function library:CreateTextbox(name, textboxtext, textpos, sizex, sizey, transp)
+    function library:CreateTextbox(name, textboxtext, textpos, sizex, sizey, transp, toggled)
         sizex = sizex or 200
         sizey = sizey or 300
         transp = transp or 0
         textpos = textpos or UDim2.new(0, 0, 0, 0)
+        if toggled == nil then
+            toggled = true
+        end
 
         local titileboxframe = Instance.new("Frame")
         titileboxframe.Parent = topper.Parent
@@ -418,7 +433,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         
         textboxdeleter.Parent = titileboxframe
         textboxdeleter.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
-        textboxdeleter.Position = UDim2.new(0, x - 41, 0, 0)
+        textboxdeleter.Position = UDim2.new(0, sizex - 40, 0, 0)
         textboxdeleter.Size = UDim2.new(0, 20, 0, 20)
         textboxdeleter.Font = Enum.Font.ArialBold
         textboxdeleter.Text = "x"
@@ -436,7 +451,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.Name = "textboxhider" .. name
         textboxhider.Parent = titileboxframe
         textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
-        textboxhider.Position = UDim2.new(0, x - 20, 0, 0)
+        textboxhider.Position = UDim2.new(0, sizex - 20, 0, 0)
         textboxhider.Rotation = 90
         textboxhider.Size = UDim2.new(0, 20, 0, 20)
         textboxhider.Font = Enum.Font.Highway
@@ -445,9 +460,8 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.TextSize = 14.000
         textboxhider.BorderColor3 = Color3.new(bordcol)
         textboxhider.BackgroundTransparency = 0.1
-        local toggled = true
 
-        textboxhider.MouseButton1Up:Connect(function()
+        local function chagngestate()
             if toggled == true then
                 toggled = false
                 textbox.ClipsDescendants = true
@@ -466,7 +480,17 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 textbox:TweenSize(UDim2.new(0, sizex, 0, sizey), "Out", "Linear", 0.2, false, nclip)
                 textboxhider.Rotation = 90
             end
+        end
+
+        textboxhider.MouseButton1Up:Connect(function()
+            chagngestate()
         end)
+
+        if toggled == false then
+            textboxhider.Rotation = 270
+            textbox.ClipsDescendants = true
+            textbox.Size = UDim2.new(0, sizex, 0, 0)
+        end
 
         local function textupdaterfunction(textboxtext)
             while wait(1) do
@@ -474,7 +498,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 if succes then
                     textbox.Text = textwillbe
                 else
-                    print(succes, textwillbe)
+                    print("ERROR at textupdaterfunctioninpcall"..succes, textwillbe)
                 end
             end
         end
