@@ -486,7 +486,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         end
 
         local toggled = toggled or true
-        if toggled = false then
+        if toggled == false then
             chagngestate()
         end
 
