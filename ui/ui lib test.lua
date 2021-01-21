@@ -1,4 +1,4 @@
-local wersja = "3.17.69"
+local wersja = "3.17.70"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -426,7 +426,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
         textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
         textbox.Position = UDim2.new(0, 0, 0, 0)
-        if toggled then
+        if toggled == true then
             textbox.Size = UDim2.new(0, sizex, 0, sizey)
         else
             textbox.Size = UDim2.new(0, sizex, 0, 0)
