@@ -1,4 +1,4 @@
-local wersja = "3.17.73"
+local wersja = "3.17.74"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -353,7 +353,9 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         sizey = sizey or 300
         transp = transp or 0
         textpos = textpos or UDim2.new(0, 0, 0, 0)
-        toggled = toggled or true
+        if toggled == nil then
+            toggled = true
+        end
 
         local titileboxframe = Instance.new("Frame")
         titileboxframe.Parent = topper.Parent
