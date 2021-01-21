@@ -1,4 +1,4 @@
-local wersja = "3.17.64"
+local wersja = "3.17.65"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -487,6 +487,8 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 
         toggled = toggled or true
         if toggled == false then
+            chagngestate()
+            wait()
             chagngestate()
         end
 
