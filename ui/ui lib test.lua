@@ -419,6 +419,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         local textbox = Instance.new("TextLabel")
         textbox.Parent = boxframe
         textbox.Name = "databox" .. name
+        textbox.Text = "Waiting for data..."
         textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
         textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
         textbox.Position = UDim2.new(0, 0, 0, 0)
