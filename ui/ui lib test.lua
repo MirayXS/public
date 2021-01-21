@@ -1,4 +1,4 @@
-local wersja = "3.17.71"
+local wersja = "3.17.73"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -419,12 +419,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
         textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
         textbox.Position = UDim2.new(0, 0, 0, 0)
-        if toggled == true then
-            textbox.Size = UDim2.new(0, sizex, 0, sizey)
-        else
-            textbox.ClipsDescendants = true
-            textbox.Size = UDim2.new(0, sizex, 0, 0)
-        end
+        textbox.Size = UDim2.new(0, sizex, 0, sizey)
         textbox.BackgroundTransparency = transp
         textbox.BorderColor3 = Color3.new(bordcol)
         textbox.TextXAlignment = Enum.TextXAlignment.Left
@@ -454,11 +449,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.Parent = titileboxframe
         textboxhider.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
         textboxhider.Position = UDim2.new(0, sizex - 20, 0, 0)
-        if toggled == true then 
-            textboxhider.Rotation = 90
-        else
-            textboxhider.Rotation = 270
-        end
+        textboxhider.Rotation = 90
         textboxhider.Size = UDim2.new(0, 20, 0, 20)
         textboxhider.Font = Enum.Font.Highway
         textboxhider.Text = ">"
@@ -491,6 +482,12 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.MouseButton1Up:Connect(function()
             chagngestate()
         end)
+
+        if toggled == false then
+            textboxhider.Rotation = 270
+            textbox.ClipsDescendants = true
+            textbox.Size = UDim2.new(0, sizex, 0, 0)
+        end
 
         local function textupdaterfunction(textboxtext)
             while wait(1) do
