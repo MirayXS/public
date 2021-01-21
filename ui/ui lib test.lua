@@ -1,4 +1,4 @@
-local wersja = "3.17.61"
+local wersja = "3.17.63"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -355,7 +355,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         callb()
     end
 
-    function library:CreateTextbox(name, textboxtext, textpos, sizex, sizey, transp)
+    function library:CreateTextbox(name, textboxtext, textpos, sizex, sizey, transp, toggled)
         sizex = sizex or 200
         sizey = sizey or 300
         transp = transp or 0
@@ -463,9 +463,8 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
         textboxhider.TextSize = 14.000
         textboxhider.BorderColor3 = Color3.new(bordcol)
         textboxhider.BackgroundTransparency = 0.1
-        local toggled = true
 
-        textboxhider.MouseButton1Up:Connect(function()
+        local function chagngestate()
             if toggled == true then
                 toggled = false
                 textbox.ClipsDescendants = true
@@ -484,6 +483,15 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 textbox:TweenSize(UDim2.new(0, sizex, 0, sizey), "Out", "Linear", 0.2, false, nclip)
                 textboxhider.Rotation = 90
             end
+        end
+
+        local toggled = toggled or true
+        if toggled = false then
+            chagngestate()
+        end
+
+        textboxhider.MouseButton1Up:Connect(function()
+            chagngestate()
         end)
 
         local function textupdaterfunction(textboxtext)
