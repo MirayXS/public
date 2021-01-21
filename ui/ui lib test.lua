@@ -498,7 +498,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 if succes then
                     textbox.Text = textwillbe
                 else
-                    print("ERROR at textupdaterfunctioninpcall"..succes, textwillbe)
+                    print("ERROR at textupdaterfunctioninpcall", succes, textwillbe)
                 end
             end
         end
