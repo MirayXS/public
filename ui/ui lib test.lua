@@ -1,4 +1,4 @@
-local wersja = "3.17.67"
+local wersja = "3.17.68"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -484,13 +484,12 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                 textboxhider.Rotation = 90
             end
         end
+        toggled = toggled or true
 
         if toggled == false then
-            chagngestate(toggled)
+            chagngestate(true)
             wait()
         end
-
-        toggled = toggled or true
 
         textboxhider.MouseButton1Up:Connect(function()
             chagngestate()
