@@ -504,16 +504,15 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 					while true do
 						textbox.Text = textwillbe
 						wait(1)
-                    end
-                else
-                    textbox.Text = textwillbe
-                end
+					end
 				else
-					print("ERROR at textupdaterfunctioninpcall", succes, textwillbe)
+					textbox.Text = textwillbe
 				end
+			else
+				print("ERROR at textupdaterfunctioninpcall", succes, textwillbe)
 			end
-			textupdaterfunction(textboxtext)
 		end
+		textupdaterfunction(textboxtext)
 	end
 
 	-- print("done")
