@@ -1,4 +1,4 @@
-local wersja = "3.17.75"
+local wersja = "3.17.76"
 print("UI " .. wersja .. "   by ciabar9ck#8155") -- se printuje wersje
 
 --[[
@@ -500,11 +500,13 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 		local function textupdaterfunction(textboxtext)
 			local succes, textwillbe = pcall(textboxtext)
 			if succes then
-				if looped then
-					while true do
-						textbox.Text = textwillbe
-						wait(1)
-					end
+                if looped then
+                    spawn(function ()
+                        while true do
+                            textbox.Text = textwillbe
+                            wait(1)
+                        end
+                    end)
 				else
 					textbox.Text = textwillbe
 				end
