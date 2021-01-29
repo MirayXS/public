@@ -504,7 +504,7 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
                     spawn(function ()
                         while true do
                             textbox.Text = textwillbe
-                            wait(1)
+                            wait()
                         end
                     end)
 				else
