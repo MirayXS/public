@@ -500,13 +500,12 @@ function library:CreateWindow(nazwa, winPosition) -- nazwa rozmiar pozycja
 		local function textupdaterfunction(textboxtext)
 			local succes, textwillbe = pcall(textboxtext)
 			if succes then
-                if looped then
-                    spawn(function ()
-                        while true do
-                            textbox.Text = textwillbe
-                            wait()
-                        end
-                    end)
+				if looped == true then
+					spawn(function()
+						while true and wait(0.1) do
+							textbox.Text = textwillbe
+						end
+					end)
 				else
 					textbox.Text = textwillbe
 				end
